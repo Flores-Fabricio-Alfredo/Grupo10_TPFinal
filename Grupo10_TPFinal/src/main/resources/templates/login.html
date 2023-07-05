@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+     <link th:rel="stylesheet" th:href="@{/css/estilo.css}">
+     <link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+     <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"> <!-- textos -->
+     <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"><!-- titulos h1-->
+     <title>Login</title>
+   </head>
+   <body>
+     	<header></header>
+       <h1 style="font-family: 'Belanosima', sans-serif;">Hola otra vez!</h1>
+	     <img th:src="@{/images/logo.png}" width="220px" title="Logo de Nutri Vida" alt="logo de Nutri Vida">
+		 <form th:action="@{/login}" th:object="${login}" method="post">
+		 	<label>Usuario</label>
+		 	<input type="text" th:field="*{usuarioLogin}">
+		 	<label>Password</label>
+		 	<input type="password" th:field="*{passwordLogin}">
+		 	<input type="submit" value="entrar">
+		 </form>
+		 <p th:if="${error}" th:text="${error}"></p>
+		 <footer></footer>
+   </body>
+</html>
