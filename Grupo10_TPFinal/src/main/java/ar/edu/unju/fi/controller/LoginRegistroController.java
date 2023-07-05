@@ -4,12 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 import  ar.edu.unju.fi.entity.Registro;
 @Controller
+@RequestMapping("/")
 public class LoginRegistroController {
-     @GetMapping("/registro")
+     @GetMapping("/login_registro")
      public String registrar(Model model) {
     	 Registro registro = new Registro();
     	 model.addAttribute("registro", registro);
