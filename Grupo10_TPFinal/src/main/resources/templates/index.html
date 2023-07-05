@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+		<head>
+			<meta charset="UTF-8">
+			<title>Inicio</title>
+		</head>
+		<header	th:fragment="header">
+				<h1><img th:src="@{/images/logo.png}" width="250px" title="Logo de Nutri Vida" alt="logo de Nutri Vida"></h1>
+				<nav >
+					<ul>
+						<li><a th:href="@{/inicio}">Inicio</a></li>
+						<li><a th:href="@{/registrarme}">Registrarme</a></li>
+						<li><a th:href="@{/recetas}">Recetas</a></li>
+						<li><a th:href="@{/servicios}">Servicios</a></li>
+						<li><a th:href="@{/testimonios}">Testimonios</a></li>
+						<li><a th:href="@{/login}">Iniciar sesion</a></li>
+						<li><a th:href="@{/login_registro}">Registrar</a></li>
+					</ul>
+				</nav>					
+		</header>
+		
+		<body>
+				<h1>HOLA MUNDO</h1>
+		</body>
+		
+		<footer>	
+				<p>contactanos  tel: 388-4343666 , tel: 388-4056099<p>
+				<p>mail: somosnutrivida@gmail.com <p>
+				<p style="text-align:center"> &copy; Copyright 2023  Nutri Vida <p>
+		</footer>
+</html>
