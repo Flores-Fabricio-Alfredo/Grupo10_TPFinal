@@ -11,7 +11,7 @@ import  ar.edu.unju.fi.entity.Registro;
 @Controller
 @RequestMapping("/")
 public class LoginRegistroController {
-     @GetMapping("/login_registro")
+     @GetMapping("/registro")
      public String registrar(Model model) {
     	 Registro registro = new Registro();
     	 model.addAttribute("registro", registro);
