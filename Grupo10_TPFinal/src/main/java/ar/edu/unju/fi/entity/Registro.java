@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Registro {
 	private String usuario;
 	private String password;
@@ -41,7 +44,7 @@ public class Registro {
 	}
 	@Override
 	public String toString() {
-		return "Contactos [usuario=" + usuario + ", gmail=" + gmail + ", password=" + password
+		return "Registro [usuario=" + usuario + ", gmail=" + gmail + ", password=" + password
 				+ "]";
 	}
 	
