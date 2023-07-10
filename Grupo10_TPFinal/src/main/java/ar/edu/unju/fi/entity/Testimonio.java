@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +16,15 @@ import jakarta.persistence.Table;
 public class Testimonio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	@Column(name="id")
 	private Long id;
+	@Column(name="fechaInicio")
 	private LocalDate fechaInicio;
+	@Column(name="usuario")
 	private String usuario;
+	@Column(name="comentario")
 	private String comentario;
+	@Column(name="estado")
 	private boolean estado;
 
 
