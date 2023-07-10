@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+		<title>Registro</title>
+		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</head>
+	
+	
+	<body>
+	
+		<header	th:replace = "~{layouts/header:: header}"></header>
+							<!-- div>
+								<label >Id</label>
+								<input class="inputForm" type="text" id="id" name="usuario_codigo" th:field="*{id}" th:readonly="${edicion}?'readonly'">
+							</div><br> -->
+							
+					<div class="tabyform">
+					
+							<h2>Lista de usuarios registrados</h2>
+								  <div class="col-xs-10 col-sm-11 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+								 
+									<table class="table table-hover" >
+									
+										<thead class="table-light">
+											<tr>
+												<th scope="col" class="txt" >Código Sucursal</th>
+												<th scope="col" class="txt" >Fecha de Inicio</th>
+												<th scope="col" class="txt">Sucursal</th>
+												<th scope="col" class="txt">Provincia</th>
+												<th scope="col" class="txt">Dirección</th>
+												<th scope="col" class="txt">Teléfono</th>
+												<th scope="col" class="txt">Horario de atención</th>
+												<th scope="col" class="txt">Acciones</th>		
+											</tr>
+										
+										</thead>
+										<tbody class="table-group-divider">
+											<!-- Filas de la tabla generadas dinámicamente -->
+											<tr  th:each="usu:${usuario}">
+													
+												<td th:text="${usu.id}"></td>
+												<td th:text="${usu.nombre}"></td>
+												<td th:text="${usu.apellido}"></td>
+												<td th:text="${usu.email}"></td>
+												<td th:text="${usu.fechaNac}"></td>
+												<td th:text="${usu.telefono}"></td>
+												<td	th:text="${usu.genero}"></td>
+												<td th:text="${usu.estatura}"></td>
+												<td>
+													<a class ="link" th:href="@{/login/modificar/}+${usu.id}">Editar</a>
+													<a class ="link" th:href="@{/login/eliminar/}+${usu.id}">Eliminar</a>
+												</td>		
+											</tr>
+										</tbody>
+									 </table>	
+									</div>	
+								 </div>
+								
+								
+	    <footer th:replace = "~{layouts/footer :: footer}"></footer>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+	</body>
+</html>
