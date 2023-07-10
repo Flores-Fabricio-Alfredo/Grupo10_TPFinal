@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+		<title>Registro</title>
+		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</head>
+	
+	
+	<body>
+	
+		<header></header>
+		
+		
+	<div>
+		<div>
+			<h3>Registro de Usuario</h3>
+				<div>
+					
+						
+						<form th:action="@{/index/guardar}"th:object="${usuario}" method="post">
+							
+							 <div hidden="">
+								<label >Id</label>
+								<input class="inputForm" type="text" id="id" name="usuario_codigo" th:field="*{id}" th:readonly="${edicion}?'readonly'">
+							</div><br> 
+							
+							
+							
+							<div>
+								<div>
+									<label for="nombre usuario">Nombre</label>
+									<input type="text" id="nombreusuario" name="nombre_usuario" th:field="*{nombre}">
+									<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+								</div>
+							</div><br>
+							
+							<div>
+								<label for="apellido usuario">Apellido</label>
+								<input type="text" id="apellidousuario" name="apellido_usuario" th:field="*{apellido}" >
+								<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+							</div><br>
+							
+							<div>
+								<label for="email usuario">Email</label>
+								<input type="text" id="emailusuario" name="usuario_email" th:field="*{email}">
+								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+							</div><br>
+							
+				
+							<div>
+								<label for="fecha nacimiento">Fecha de Nacimiento</label>
+								<input type="date" id="fecha" name="fecha_nacimiento" th:field="*{fechaNac}">
+								<div class="text-danger" th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}"></div>
+							</div><br>
+							
+							<div>
+								<label for="telefono usuario" >Teléfono</label>
+								<input type="text" id="telefonousuario" name="usuario_telefono"  th:field="*{telefono}">
+								<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+								
+							</div><br>
+							
+							
+							<div>
+								<label for="genero" >Género</label>
+
+									<select  id="genero" name="usuario_genero"  th:field="*{genero}">
+									<option value="" selected>Seleccione una opción</option>
+									<option value="Femenino">Femenino</option>
+									<option value="Masculino">Masculino</option>
+									<option value="Otro">Otro</option>
+									</select>
+									<div class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+							</div><br>
+							
+							<div>
+								<label for="estatura usuario" >Estatura</label>
+								<input type="number" id="estaturausuario" name="usuario_estatura" th:field="*{estatura}" >
+								<div class="text-danger" th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}"></div>
+							</div><br>
+							
+								<button  class="form-element" type="submit" th:text="Guardar"></button>
+								 <!--  p><input type="submit" class="button" value="Guardar"></p>-->
+						
+								
+								
+						</form>	
+							
+				</div>
+
+	   </div>
+</div>
+	
+		
+	
+	    <footer></footer>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+	</body>
+</html>

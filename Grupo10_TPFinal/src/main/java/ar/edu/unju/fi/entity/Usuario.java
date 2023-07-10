@@ -11,12 +11,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Pattern;
+
 import jakarta.validation.constraints.Size;
 
 @Component
@@ -59,8 +61,8 @@ public class Usuario {
 	private String genero;
 	
 	@Column(name="usu_estatura",nullable = false)
-	@NotEmpty(message="Este campo no puede quedar vacío.")
-	@Pattern(regexp="[0-2.50]", message="Debe ingresar unicamente números")
+	@NotNull(message="Este campo no puede quedar vacío.")
+	@Max( value=(2), message="Estatura fuera de rango")
 	private float estatura;
 
 	@Column(name="usu_estado")

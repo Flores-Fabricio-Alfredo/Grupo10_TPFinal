@@ -30,24 +30,28 @@ public class UsuarioController {
 
 	@GetMapping("/registrarme")
 	public String getFormularioPage(Model model) {
+		
 		model.addAttribute("usuario", usuario);
-		return "registrarme";
+		return "usuario_nuevo";
 		
 	}
 	
 	
-	@PostMapping("/registrarme/guardar")
+	@PostMapping("/index/guardar")
 	public ModelAndView getGuardarUsuarioPage( @Valid @ModelAttribute("usuario")Usuario usuario, BindingResult result) {
 		
-		ModelAndView modelView = new ModelAndView("registrarme");
+		ModelAndView modelView = new ModelAndView("index");
 		if (result.hasErrors()){
-			modelView.setViewName("registrarme");
+			modelView.setViewName("usuario_nuevo");
 			modelView.addObject("usuario", usuario);
 			return modelView;
 		}
 		usuarioService.guardar(usuario);
 		modelView.addObject("usuario", usuarioService.getLista());
 		return modelView;
-	}
-}
 
+	}
+	
+	
+	
+}
