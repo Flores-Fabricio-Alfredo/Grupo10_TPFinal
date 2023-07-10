@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+		<title>Testimonios</title>
+		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</head>
+	<body>
+	<header></header>
+	<h1>Testimonios</h1>
+		<img width="150" alt="logo" th:src="@{/images/logo.png}">
+		<p>Aqui encontraras testimonios de gente que uso nuestras recetas de salud y asi tambien nuestros consejos para mejorar tu calidad de vida.</p>
+		 <a th:href="@{/nuevoTestimonio}">Testimonios Nuevos</a>
+		<div class="card mb-3" style="max-width: 540px;">
+		  <div class="row g-0">
+		    <div  class="col-md-4">
+		      <img src="..." class="img-fluid rounded-start" alt="...">
+		    </div>
+		    <div class="col-md-8" >
+		      <div class="card-body" th:each = "test:${testimonio}">
+		        <h5 th:text = "${test.usuario} " class="card-title"></h5>
+		        <p class="card-text" th:text = "${test.comentario} "> </p>
+		        <p class="card-text" th:text = "${test.fechaInicio} "><small class="text-muted" ></small> </p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	<footer></footer>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+	</body>
+</html>
