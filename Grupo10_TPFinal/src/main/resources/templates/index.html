@@ -2,30 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 		<head>
 			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
 			<title>Inicio</title>
+			<link rel="styLesheet" th:href="@{/css/estilo.css}">
+			<link rel="styLesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+			<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		</head>
-		<header	th:fragment="header">
-				<h1><img th:src="@{/images/logo.png}" width="250px" title="Logo de Nutri Vida" alt="logo de Nutri Vida"></h1>
-				<nav >
-					<ul>
-						<li><a th:href="@{/inicio}">Inicio</a></li>
-						<li><a th:href="@{/registrarme}">Registrarme</a></li> 
-						<li><a th:href="@{/recetas}">Recetas</a></li>
-						<li><a th:href="@{/servicios}">Servicios</a></li>
-						<li><a th:href="@{/testimonios}">Testimonios</a></li>
-						<li><a th:href="@{/login}">Iniciar sesion</a></li>
-						<li><a th:href="@{/registro}">Crear Usuario</a></li>
-					</ul>
-				</nav>					
-		</header>
 		
-		<body>
-				<h1>NutriVida</h1>
-		</body>
+		<header	th:replace = "~{layouts/header:: header}"></header>		
+			<body>
+				
+				<div class="container">
+					<h1 class="text-center">NUTRIVIDA</h1>
+					<h3>Conocenos </h3>
+						<p class="text-center">
+							Nuestro viaje comenzó hace años, cuando un grupo de apasionados por la nutrición se unió con un objetivo común: ayudar a las personas a descubrir el verdadero poder de una alimentación saludable. Nos dimos cuenta de que las recetas no solo podían ser deliciosas, sino que también podían nutrir, sanar y cambiar vidas.
+
+							Cada una de nuestras recetas es cuidadosamente diseñada para equilibrar los nutrientes que tu cuerpo necesita. Desde vibrantes ensaladas hasta tentadores postres, cada plato está lleno de ingredientes frescos y nutritivos que trabajan en armonía para mejorar tu salud y vitalidad.
+							
+							Pero no nos detenemos solo en las recetas. Sabemos que cada persona es única y tiene diferentes necesidades. Es por eso que ofrecemos planes de cuidado personalizados, adaptados específicamente a tus metas y preferencias. Nuestros expertos en nutrición te guiarán en cada paso del camino, brindándote asesoramiento personalizado y motivación constante.
+						<p>
+					
+						<div class="row row-cols-1 row-cols-md-2 g-4">
+							  <div class="col">
+							    <div class="card">
+							      <img class="img-fluid rouded" th:src="@{../images/comida3.png}">
+							      <div class="card-body">
+							        <h5 class="card-title">Nutrición que saluda a tu bienestar</h5>
+							        <p class="card-text">Saluda a una alimentación balanceada y descubre tu mejor versión.</p>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="col">
+							    <div class="card">
+							     <img class="img-fluid rouded" th:src="@{../images/comida1.png}">
+							      <div class="card-body">
+							        <h5 class="card-title">Cambiando vidas</h5>
+							        <p class="card-text">A través de recetas saludables, planes de cuidado y asesoramiento.</p>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="col">
+							    <div class="card">
+							      <img class="img-fluid rouded" th:src="@{../images/comida2.png}">
+							      <div class="card-body">
+							        <h5 class="card-title">Tu guía de alimentación</h5>
+							        <p class="card-text">Recetas, planes y asesoramiento.</p>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="col">
+							    <div class="card">
+							      <img class="img-fluid rouded" th:src="@{../images/comida.png}">
+							      <div class="card-body">
+							        <h5 class="card-title">Sabores que nutren </h5>
+							        <p class="card-text">Planes que cuidan, asesoramiento que transforma</p>
+							      </div>
+							    </div>
+							  </div>
+						</div>
+						
+					</div>
+				<br>
+			</body>
 		
-		<footer>	
-				<p>contactanos  tel: 388-4343666 , tel: 388-4056099<p>
-				<p>mail: somosnutrivida@gmail.com <p>
-				<p style="text-align:center"> &copy; Copyright 2023  Nutri Vida <p>
-		</footer>
+		<footer th:replace = "~{layouts/footer :: footer}"></footer>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		
 </html>
