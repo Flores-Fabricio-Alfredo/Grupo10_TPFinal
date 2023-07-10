@@ -9,13 +9,37 @@
 	</head>
 	<body>
 	<header></header>
-	<h1>Recetas saludables</h1>
-		<img width="150" alt="logo" th:src="@{/images/logo.png}">
-		<p>En esta sección, te damos la bienvenida a un mundo de sabor y bienestar. Aquí encontrarás una exquisita colección de las mejores recetas saludables, 
-		cuidadosamente diseñadas para nutrir tu cuerpo y deleitar tu paladar al mismo tiempo. Nuestro compromiso es ofrecerte opciones culinarias que promuevan 
-		un estilo de vida equilibrado y te ayuden a alcanzar tus metas de salud y bienestar.
-		Te invitamos a explorar esta sección y descubrir una nueva forma de disfrutar de la comida, donde la salud y el sabor se unen en armonía. 
-		¡Prepárate para deleitarte con las mejores recetas saludables y descubrir el placer de alimentar tu cuerpo con amor y cuidado!</p>
+			<div class="container">
+			<div class="row">
+				<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8 col-xl-12 col-xxl-12">
+					<h1>Recetas saludables</h1>
+						<img width="150" alt="logo" th:src="@{/images/logo.png}">
+						<p>En esta sección, te damos la bienvenida a un mundo de sabor y bienestar. Aquí encontrarás una exquisita colección de las mejores recetas saludables, 
+						cuidadosamente diseñadas para nutrir tu cuerpo y deleitar tu paladar al mismo tiempo. Nuestro compromiso es ofrecerte opciones culinarias que promuevan 
+						un estilo de vida equilibrado y te ayuden a alcanzar tus metas de salud y bienestar.
+						Te invitamos a explorar esta sección y descubrir una nueva forma de disfrutar de la comida, donde la salud y el sabor se unen en armonía. 
+						¡Prepárate para deleitarte con las mejores recetas saludables y descubrir el placer de alimentar tu cuerpo con amor y cuidado!</p>
+					
+				</div>
+				<a th:href="@{/nuevo}">Recetas Nuevas</a>
+			</div>
+			<div class="row" >
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4" th:each = "rec:${receta}">
+                    <div class="card mx-6 mt-3" style="width: 20rem;">
+                          <img th:src="@{/images/logo.png}" style="width: 150px;" class="card-img-top" alt="logo">
+                          <div class="card-body box">
+                            <h5 class="card-title" th:text="${rec.nombre}"></h5>
+                            <p class="card-text" th:text="${rec.ingrediente}"></p>
+                            <strong th:text="${rec.preparacion}"></strong>
+                        </div>
+                        <div class="d-grid gap-2 d-md-block">
+							<a  th:href="@{/receta/modificar/}+${rec.id}">Editar</a>
+			  				<a  th:href="@{/receta/eliminar/}+${rec.id}">Eliminar</a>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<footer></footer>
 	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	

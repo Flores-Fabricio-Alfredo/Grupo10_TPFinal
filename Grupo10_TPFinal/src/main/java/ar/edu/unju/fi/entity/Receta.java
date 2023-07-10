@@ -1,29 +1,64 @@
 package ar.edu.unju.fi.entity;
 
-public class Receta {
-	private Long id;
-	private String categoria;
-	private String nombre;
-	private String ingrediente;
-	private String preparacion;
-	private String rutaImagen;
-	private String informacion;
-	private boolean estado;
+import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Component
+@Entity
+@Table(name="recetas")
+public class Receta {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name="nombre")
+	private String nombre;
+	
+	@Column(name="categoria")
+	private  String categoria;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "receta")
+	private List<Ingrediente> ingredientes;
+	
+	@Column(name="preparacion")
+	private String preparacion;
+	
+	@Column(name="imagen")
+	private String imagen;
+	
+	private boolean estado;
+	
 	public Receta() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Receta(String categoria, String nombre, String ingrediente, String preparacion, String rutaImagen,
-			String informacion) {
+
+
+	public Receta(Long id, String nombre, String categoria, List<Ingrediente> ingredientes, String preparacion,
+			String imagen, boolean estado) {
 		super();
-		this.categoria = categoria;
+		this.id = id;
 		this.nombre = nombre;
-		this.ingrediente = ingrediente;
+		this.categoria = categoria;
+		this.ingredientes = ingredientes;
 		this.preparacion = preparacion;
-		this.rutaImagen = rutaImagen;
-		this.informacion = informacion;
+		this.imagen = imagen;
+		this.estado = estado;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -31,14 +66,6 @@ public class Receta {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
 	}
 
 	public String getNombre() {
@@ -49,12 +76,20 @@ public class Receta {
 		this.nombre = nombre;
 	}
 
-	public String getIngrediente() {
-		return ingrediente;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setIngrediente(String ingrediente) {
-		this.ingrediente = ingrediente;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public List<Ingrediente> getIngredientes() {
+		return ingredientes;
+	}
+
+	public void setIngredientes(List<Ingrediente> ingredientes) {
+		this.ingredientes = ingredientes;
 	}
 
 	public String getPreparacion() {
@@ -65,29 +100,26 @@ public class Receta {
 		this.preparacion = preparacion;
 	}
 
-	public String getRutaImagen() {
-		return rutaImagen;
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setRutaImagen(String rutaImagen) {
-		this.rutaImagen = rutaImagen;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
-	public String getInformacion() {
-		return informacion;
-	}
 
-	public void setInformacion(String informacion) {
-		this.informacion = informacion;
-	}
 
 	public boolean isEstado() {
 		return estado;
 	}
 
+
+
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+	
 	
 	
 }
