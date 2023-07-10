@@ -2,15 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 		<head>
 		    <meta charset="UTF-8">
-		
+			<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+			<link rel="styLesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+			<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+			
 		</head>
 		<body>
-			<footer>
+				<footer class="bg-linght text-dark pt-5 pb4">
+					<div class="container text-center text-md-start">
+						<div class="row text-center text-md-start">
+							
+							<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+								<h5 class="text-uppercase md-4 font-weight-bolt text-primary">Nosotros</h5>
+									<hr class="mb-4" >
+									<p> Hola nosotros somo NutriVida una empresa familiar que trabaja desde 2003<p>
+							</div>
+							
+							<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+								<h5 class="text-uppercase mb-4 font-weigth-bolt text-primary">Redes</h5>
+									<hr class="mb-4">
+										<p>
+											<a class="text-dark" href="https://es-la.facebook.com/"><i class="fa-brands fa-facebook"></i></a> - facebook
+										<p>
+										<p>
+											<a  class="text-dark" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a> - instagram
+										<p>
+										<p>
+											<a class="text-dark" href="https://www.twitter.com/"><i class="fa-brands fa-twitter"></i></a> - twitter
+										<p>
+										
+								
+							</div>
+							
+							<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+								<h5 class="text-uppercase mb-4 font-weigth-bolt text-primary">Contactanos</h5>
+									<hr class="mb-4">
+										<p>
+											<i class="fas fa-home me-3" ></i> Lavalle 23
+										<p>
+										<p>
+											<i class="fas fa-envelope me-3" ></i> nutriv@gmail.com
+										<p>
+										<p>
+											<i class="fas fa-phone me-3" ></i> 388-4567899
+										
+							</div>
+							
+							<div class="text-center p-3">
+								<hr class="mb-4">
+								<p> &copy; Copyright NutriVida | Facultad de Ingenieria | Jujuy 2023 
+								
+							
+							</div>
+						</div>
+					</div>
 				
-				<p>contactanos: 388-4343666 , tel: 388-4056099<p>
-				<p>mail: somosnutrivida@gmail.com <p>
-				<p style="text-align:center"> &copy; Copyright 2023  NutriVida &copy; MNFSL <p>
+				
+				</footer>
 			
-			</footer>
+			<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+			
 		</body>
 </html>
+
+
