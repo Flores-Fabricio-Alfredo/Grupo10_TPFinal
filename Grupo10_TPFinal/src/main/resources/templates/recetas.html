@@ -8,12 +8,12 @@
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</head>
 	<body>
-	<header></header>
+	<header	th:replace = "~{layouts/header:: header}"></header>	
 			<div class="container">
 			<div class="row">
 				<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8 col-xl-12 col-xxl-12">
 					<h1>Recetas saludables</h1>
-						<img width="150" alt="logo" th:src="@{/images/logo.png}">
+						
 						<p>En esta sección, te damos la bienvenida a un mundo de sabor y bienestar. Aquí encontrarás una exquisita colección de las mejores recetas saludables, 
 						cuidadosamente diseñadas para nutrir tu cuerpo y deleitar tu paladar al mismo tiempo. Nuestro compromiso es ofrecerte opciones culinarias que promuevan 
 						un estilo de vida equilibrado y te ayuden a alcanzar tus metas de salud y bienestar.

@@ -55,7 +55,7 @@ public class RecetaController {
 		boolean edicion = false;
 		model.addAttribute("receta", recetaService.getReceta());
 		model.addAttribute("edicion", edicion);
-		return "recetas_nuevo";		
+		return "receta_nueva";		
 	}
 	
 	@PostMapping("/receta/modificar")
@@ -63,7 +63,7 @@ public class RecetaController {
 		if(result.hasErrors()) {
 			boolean edicion = true;
 			model.addAttribute("edicion", edicion);
-			return "receta_nuevo";
+			return "receta_nueva";
 		}
 		
 		recetaService.Modificar(receta);
@@ -76,7 +76,7 @@ public class RecetaController {
 		boolean edicion = true;
 		model.addAttribute("receta",recetaEncontrada);
 		model.addAttribute("edicion", edicion);
-		return "recetas_nueva";
+		return "receta_nueva";
 		
 	}
 	

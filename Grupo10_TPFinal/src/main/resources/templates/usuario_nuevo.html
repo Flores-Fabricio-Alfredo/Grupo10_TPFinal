@@ -11,13 +11,13 @@
 	
 	<body>
 	
-		<header></header>
+		<header	th:replace = "~{layouts/header:: header}"></header>
 		
 		
-	<div class="conteiner text-center">
-		<div class="card col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10 border: m-4 d-flex justify-content-center align-items-center">
+	<div>
+		<div>
 			<h3>Registro de Usuario</h3>
-				<div class="card-body">
+				<div>
 					
 						
 						<form th:action="@{/index/guardar}"th:object="${usuario}" method="post">
@@ -29,54 +29,43 @@
 							
 							
 							
-							<div class="row mb-1">
-								<label for="nombre usuario" class="col-sm-4 col-form-label">Nombre</label>
-								<div class="col-sm-6">
+							<div>
+								<div>
+									<label for="nombre usuario">Nombre</label>
 									<input type="text" id="nombreusuario" name="nombre_usuario" th:field="*{nombre}">
 									<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 								</div>
 							</div><br>
 							
-							
-							
-							<div class="row">
-								<label for="apellido usuario" class="col-sm-4 col-form-label">Apellido</label>
-								<div class="col-sm-6">
-									<input type="text" id="apellidousuario" name="apellido_usuario" th:field="*{apellido}" >
-									<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
-								</div>
+							<div>
+								<label for="apellido usuario">Apellido</label>
+								<input type="text" id="apellidousuario" name="apellido_usuario" th:field="*{apellido}" >
+								<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
 							</div><br>
 							
-							
-							<div class="row">
-								<label for="email usuario" class="col-sm-4 col-form-label">Email</label>
-								<div class="col-sm-6">
-									<input type="text" id="emailusuario" name="usuario_email" th:field="*{email}">
-									<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-								</div>
+							<div>
+								<label for="email usuario">Email</label>
+								<input type="text" id="emailusuario" name="usuario_email" th:field="*{email}">
+								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 							</div><br>
 							
 				
-							<div class="row">
-								<label for="fecha nacimiento" class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
-								<div class="col-sm-6">
-									<input type="date" id="fecha" name="fecha_nacimiento" th:field="*{fechaNac}">
-									<div class="text-danger" th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}"></div>
-								</div>
+							<div>
+								<label for="fecha nacimiento">Fecha de Nacimiento</label>
+								<input type="date" id="fecha" name="fecha_nacimiento" th:field="*{fechaNac}">
+								<div class="text-danger" th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}"></div>
 							</div><br>
 							
-							<div class="row">
-								<label for="telefono usuario" class="col-sm-4 col-form-label">Teléfono</label>
-								<div class="col-sm-6">
-									<input type="text" id="telefonousuario" name="usuario_telefono"  th:field="*{telefono}">
-									<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
-								</div>
+							<div>
+								<label for="telefono usuario" >Teléfono</label>
+								<input type="text" id="telefonousuario" name="usuario_telefono"  th:field="*{telefono}">
+								<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+								
 							</div><br>
 							
 							
-							<div  class="row">
-								<label for="genero" class="col-sm-4 col-form-label" >Género</label>
-								<div class="col-sm-6">
+							<div>
+								<label for="genero" >Género</label>
 
 									<select  id="genero" name="usuario_genero"  th:field="*{genero}">
 									<option value="" selected>Seleccione una opción</option>
@@ -85,18 +74,15 @@
 									<option value="Otro">Otro</option>
 									</select>
 									<div class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
-								</div>
 							</div><br>
 							
-							<div class="row">
-								<label for="estatura usuario"  class="col-sm-4 col-form-label" >Estatura</label>
-								<div class="col-sm-6">
-									<input type="text" id="estaturausuario" name="usuario_estatura" th:field="*{estatura}" >
-									<div class="text-danger" th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}"></div>
-								</div>
+							<div>
+								<label for="estatura usuario" >Estatura</label>
+								<input type="number" id="estaturausuario" name="usuario_estatura" th:field="*{estatura}" >
+								<div class="text-danger" th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}"></div>
 							</div><br>
 							
-								<button  class="btn btn-outline-success" type="submit" th:text="Guardar"></button>
+								<button  class="form-element" type="submit" th:text="Guardar"></button>
 								 <!--  p><input type="submit" class="button" value="Guardar"></p>-->
 						
 								
