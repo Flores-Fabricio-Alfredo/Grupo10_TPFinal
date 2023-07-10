@@ -18,15 +18,15 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/")
 public class TestimonioController {
-	@Autowired
-	private Testimonio testimonio;
+	
+	
 	@Autowired
 	private ITestimonioService testimonioService;
 
 	
 	@GetMapping("/testimonios")
-	public String getTestimoniosPage(Model model) {
-		model.addAttribute("testimonio",testimonio);
+	public String getTestimoniosPage() {
+		
 		return "testimonios";
 	}
 

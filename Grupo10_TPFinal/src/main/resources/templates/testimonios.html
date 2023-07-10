@@ -8,7 +8,7 @@
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</head>
 	<body>
-	<header></header>
+	<header th:replace ="~{layouts/header :: header}"></header>
 	<h1>Testimonios</h1>
 		<img width="150" alt="logo" th:src="@{/images/logo.png}">
 		<p>Aqui encontraras testimonios de gente que uso nuestras recetas de salud y asi tambien nuestros consejos para mejorar tu calidad de vida.</p>
@@ -19,7 +19,7 @@
 		      <img src="..." class="img-fluid rounded-start" alt="...">
 		    </div>
 		    <div class="col-md-8" >
-		      <div class="card-body" th:each = "test:${testimonio}">
+		      <div class="card-body" th:each = "test:${testimonios}">
 		        <h5 th:text = "${test.usuario} " class="card-title"></h5>
 		        <p class="card-text" th:text = "${test.comentario} "> </p>
 		        <p class="card-text" th:text = "${test.fechaInicio} "><small class="text-muted" ></small> </p>
