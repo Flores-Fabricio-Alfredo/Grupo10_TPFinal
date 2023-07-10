@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+     <link th:rel="stylesheet" th:href="@{/css/estilos.css}">
+     <link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+     <link rel="styLesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"> <!-- textos -->
+     <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"><!-- titulos h1-->
+     <title>Login</title>
+   </head>
+   <body>
+     	<header></header>
+     	<div class="custom-container container text-center mb-3 mt-5">
+     	   <h1 class="m-auto" style="font-family: 'Belanosima', sans-serif;">Hola otra vez!</h1>
+	       <img th:src="@{/images/logo.png}" width="220px" title="Logo de Nutri Vida" alt="logo de Nutri Vida">
+     		 <form th:action="@{/login}" th:object="${login}" method="post">
+		 	<div class="row mb-1">
+		 		<div class="col-12">
+		 			<label class="labelLogin">Usuario</label>
+		 		</div>
+		 		<div class="col-12">
+		 			<input class="inputLogin" type="text" th:field="*{usuarioLogin}">
+		 		</div>
+		 	</div>
+		 	<div class="row mb-1">
+		 		<div class="col-12">
+		 			<label class="labelLogin">Password</label>
+		 		</div>
+		 		<div class="col-12">
+		 			<input class="inputLogin" type="password" th:field="*{passwordLogin}">
+		 		</div>
+		 	</div>
+		 	<input  class="inputLogin" type="submit" value="entrar">
+		 	<p class="labelLogin" th:if="${error}" th:text="${error}"></p>
+		 </form>
+     	</div>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		  <footer></footer>
+   </body>
+</html>

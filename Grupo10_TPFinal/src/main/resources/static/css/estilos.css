@@ -1,0 +1,31 @@
+/*@charset "ISO-8859-1";*/
+/* Estilo login*/
+
+
+.labelLogin{
+	font-family: 25px;
+	font-family:'Gorditas', sans-serif;
+	color:#734d26 ;
+}
+.inputLogin{
+	border-radius: 20px;
+	margin-bottom: 20px;
+	padding:12px;
+	border: 1px solid black;
+    outline: none;
+}
+
+.inputLogin:hover{
+	 background:#e5fcd4;
+     cursor: pointer;
+     color:black;
+    
+}
+@media (min-width: 540px) {
+  .custom-container {
+    width: 530px !important;
+    margin-top: 150px;
+    border-radius: 20px;
+    border: 1px solid #4db82c; 
+  }
+}
