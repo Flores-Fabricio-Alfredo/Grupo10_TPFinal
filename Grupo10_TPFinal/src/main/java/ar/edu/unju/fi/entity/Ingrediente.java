@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Component
 @Entity
-@Table(name="ingrediente")
+@Table(name="ingredientes")
 public class Ingrediente {
 
 	@Id

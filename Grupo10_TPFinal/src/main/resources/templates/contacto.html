@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
+			<title>Inicio</title>
+			<link rel="styLesheet" th:href="@{/css/estilo.css}">
+			<link rel="styLesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+			<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		</head>
+		
+			<header	th:replace = "~{layouts/header:: header}"></header>	
+				<body>
+					<section class="container text-center mb-3 mt-5">
+						<div class= "row">
+							<div class= "card">
+							<div class="md-3 text-center">
+								<h3>Contactenos</h3>								
+							</div>
+								<div class="text-center m-4">
+								
+								
+								
+									<form th:action="@{/contacto}"th:object="${contacto}" method="post">									
+									
+									
+								
+									
+									<div class="form-group mb-3">
+						               		<label for="nombre" class="h5">Nombre</label>
+						               		<input  type="text"  class="form-contol" name="Ingrese su nombre" placeholder="Ingrese su nombre" th:field="*{nombre}">
+						               		
+						               		
+						               		<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div> 
+						               </div>
+						           
+						          
+						                <div class="form-group mb-3">
+						                	<label for="email" class="h5">Email</label>
+											<input  type="email" class="form-contol"  name="Ingrese su Email" placeholder="Ingrese un email válido" th:field="*{email}"> 
+
+
+						              		<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div> 
+						              	</div>
+						              
+						              
+						                <div class="form-group mb-3">
+						                	<label for="mensaje" class="h5">Mensaje</label>
+						              		<textarea  class="form-contol"  rows="5" cols="30" placeholder="Tu mensaje... " th:field="*{mensaje}"></textarea>
+						             
+											<div class="text-danger" th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"></div> 
+										</div>
+										
+										
+										<div class="text-center m-4">
+											<input type="submit" class="btn btn-lg" style="background-color: #45BFA9; color: white; outline: none;" value="Enviar">
+										</div>
+									                
+						         	</form>	
+									 <div class="text-center h3">
+              							<p  th:if="${mensaje}" th:text="${mensaje}"></p>
+            						 </div>				
+								</div>
+						</div>
+						
+						</div>
+						
+					</section>
+				</body>
+			<footer th:replace = "~{layouts/footer :: footer}"></footer>
+			<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		
+</html>
