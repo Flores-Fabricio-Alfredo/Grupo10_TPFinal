@@ -24,12 +24,19 @@ public class Testimonio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "tes_Id")
 	private Long id;
+	
+	@Column(name = "tes_titulo")
+	private String titulo;
+	
 	@Column(name = "tes_fecha" , nullable = false)
 	private LocalDate fecha;
+	
 	@Column(name = "tes_comentario" , columnDefinition = "text",nullable = false)
 	private String comentario;
+	
 	@Column(name = "tes_estado" , nullable = false)
 	private boolean estado;
+	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reg_id")
     @JsonBackReference
@@ -44,12 +51,14 @@ public class Testimonio {
 		this.usuario = usuario;
 	}
 
-	public Testimonio(Long id, LocalDate fecha, String comentario) {
+	public Testimonio(Long id, String titulo, LocalDate fecha, String comentario, boolean estado, Usuario usuario) {
 		super();
-		
 		this.id = id;
+		this.titulo = titulo;
 		this.fecha = fecha;
 		this.comentario = comentario;
+		this.estado = estado;
+		this.usuario = usuario;
 	}
 
 	public Testimonio() {
@@ -61,6 +70,16 @@ public class Testimonio {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	
+	
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public LocalDate getFecha() {
