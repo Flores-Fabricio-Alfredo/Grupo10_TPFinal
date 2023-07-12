@@ -59,7 +59,7 @@ public class CalcularImcController {
 			usuarioService.guardar(usuarioEncontrado);
 
 			model.addAttribute("resultadoIMC", imc.getImc());
-			model.addAttribute("usuarioEncontrado", usuarioEncontrado);
+			model.addAttribute("usuario", usuarioEncontrado);
 		}
 		
 		if (optionalUsuario.isEmpty()) {

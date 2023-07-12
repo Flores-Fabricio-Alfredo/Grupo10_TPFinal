@@ -13,7 +13,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import jakarta.validation.constraints.Email;
@@ -74,6 +76,13 @@ public class Usuario {
     @Column(name = "usu_codigoAleatorio")
     private String codigoAleatorio;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<IndiceMasaCorporal> imc = new ArrayList<>();
+    
+    @OneToOne(mappedBy="usuario")
+    @JoinColumn(name="test_id")
+    private Testimonio testimonio;
+
     public Usuario() {
         generarCodigoAleatorio();
     }
@@ -115,8 +124,7 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    @OneToMany(mappedBy = "usuario")
-    private List<IndiceMasaCorporal> imc = new ArrayList<>();
+    
     public String getEmail() {
         return email;
     }
