@@ -8,43 +8,47 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.entity.Receta;
 import ar.edu.unju.fi.repository.IRecetaRepository;
 import ar.edu.unju.fi.service.IRecetaService;
-import jakarta.validation.Valid;
 
 @Service("recetaServiceMysqlImp")
-public class RecetaServiceMysqlImp implements IRecetaService{
+public class RecetaServiceMysqlImp implements IRecetaService {
+	@Autowired
+	Receta receta;
 	
 	@Autowired
-	private IRecetaRepository recetaRepository;
-	
-	@Autowired
-	private Receta receta;
+	IRecetaRepository recetaRepository;
 	
 	@Override
-	public List<Receta>getLista(){
+	public List<Receta> getLista() {
 		return recetaRepository.findByEstado(true);
 	}
-	
+
 	@Override
-	public void guardar (@Valid Receta receta) {
+	public void guardar(Receta receta) {
+		receta.setEstado(true);
 		recetaRepository.save(receta);
+		
 	}
-	
+
 	@Override
 	public Receta getBy(Long id) {
 		return recetaRepository.findById(id).get();
 	}
+	
 	@Override
-	public void Modificar (@Valid Receta receta) {
-		receta.setEstado(true);
-		recetaRepository.save(receta);	
+	public List<Receta> getListaCategoria(String categoria) {
+		return recetaRepository.findByCategoria(categoria);
 	}
+
 	@Override
-	public void Eliminar (Receta recetaEncontrada) {
+	public void eliminar(Receta recetaEncontrada) {
 		recetaEncontrada.setEstado(false);
-		recetaRepository.save(receta);
+		recetaRepository.save(recetaEncontrada);
+		
 	}
+
 	@Override
 	public Receta getReceta() {
 		return receta;
 	}
+
 }
