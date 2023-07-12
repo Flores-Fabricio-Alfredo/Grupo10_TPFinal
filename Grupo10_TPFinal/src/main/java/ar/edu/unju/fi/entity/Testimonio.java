@@ -4,44 +4,64 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-@Component
+
 @Entity
-@Table(name = "testimonios")
+@Component
+@Table(name = "testimonio")
 public class Testimonio {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name = "tes_Id")
 	private Long id;
-	@Column(name="fechaInicio")
-	private LocalDate fechaInicio;
-	@Column(name="usuario")
-	private String usuario;
-	@Column(name="comentario")
+	
+	@Column(name = "tes_titulo")
+	private String titulo;
+	
+	@Column(name = "tes_fecha" , nullable = false)
+	private LocalDate fecha;
+	
+	@Column(name = "tes_comentario" , columnDefinition = "text",nullable = false)
 	private String comentario;
-	@Column(name="estado")
+	
+	@Column(name = "tes_estado" , nullable = false)
 	private boolean estado;
-
-
-
-	public Testimonio() {
-		// TODO Auto-generated constructor stub
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reg_id")
+    @JsonBackReference
+    private Usuario usuario;
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
-	public Testimonio(Long id, LocalDate fechaInicio, String usuario, String comentario, boolean estado) {
+	public Testimonio(Long id, String titulo, LocalDate fecha, String comentario, boolean estado, Usuario usuario) {
 		super();
 		this.id = id;
-		this.fechaInicio = fechaInicio;
-		this.usuario = usuario;
+		this.titulo = titulo;
+		this.fecha = fecha;
 		this.comentario = comentario;
 		this.estado = estado;
+		this.usuario = usuario;
+	}
+
+	public Testimonio() {
 	}
 
 	public Long getId() {
@@ -52,39 +72,38 @@ public class Testimonio {
 		this.id = id;
 	}
 
-	public LocalDate getfechaInicio() {
-		return fechaInicio;
+	
+	
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setfechaInicio(LocalDate fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public LocalDate getFecha() {
+		return fecha;
 	}
 
-	public void setNombre(String usuario) {
-		this.usuario = usuario;
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getComentario() {
 		return comentario;
 	}
 
-	public void setComentario(String ingrediente) {
-		this.comentario = ingrediente;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
-
-
 
 	public boolean isEstado() {
 		return estado;
 	}
 
-
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
+
 }

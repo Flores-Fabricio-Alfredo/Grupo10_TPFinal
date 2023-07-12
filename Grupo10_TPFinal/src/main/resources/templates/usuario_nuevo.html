@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org/" lang="es">
 	<head>
 		<meta charset="UTF-8">
+		<title>Nuevo usuario</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
 		<title>Registro</title>
+		<link rel="stylesheet" th:href="@{../css/estilos.css}">
 		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</head>
@@ -11,14 +13,15 @@
 	
 	<body>
 	
-		<header></header>
+		<header	th:replace = "~{layouts/header:: header}"></header>	
 		
-		
-	<div class="conteiner text-center">
-		<div class="card col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10 border: m-4 d-flex justify-content-center align-items-center">
-			<h3>Registro de Usuario</h3>
-				<div class="card-body">
-					
+	<div class="conteiner mt-4">
+		<div class="row justify-content-center">
+			<div class="card text-center border-success " style="width: 35rem;">
+			<br>
+			<h3 class="card-title">Registro de Usuario</h3>
+					<div class="card-body d-flex justify-content-center align-items-center">
+							
 						
 						<form th:action="@{/index/guardar}"th:object="${usuario}" method="post">
 							
@@ -29,71 +32,96 @@
 							
 							
 							
-							<div class="row mb-1">
-								<label for="nombre usuario" class="col-sm-4 col-form-label">Nombre</label>
-								<div class="col-sm-6">
-									<input type="text" id="nombreusuario" name="nombre_usuario" th:field="*{nombre}">
-									<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="nombre usuario" class="col-form-label">Nombre</label>
 								</div>
+								
+								<div class="col-auto">
+									<input type="text" id="nombreusuario" class="form-control"  name="nombre_usuario" th:field="*{nombre}">
+								</div>
+								
+								<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 							</div><br>
 							
 							
 							
-							<div class="row">
-								<label for="apellido usuario" class="col-sm-4 col-form-label">Apellido</label>
-								<div class="col-sm-6">
-									<input type="text" id="apellidousuario" name="apellido_usuario" th:field="*{apellido}" >
-									<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+							
+							<div  class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="apellido usuario" class="col-form-label">Apellido</label>
 								</div>
+								
+								<div class="col-auto">
+									<input type="text" id="apellidousuario" name="apellido_usuario" class="form-control" th:field="*{apellido}" >
+								</div>
+								<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
 							</div><br>
 							
 							
-							<div class="row">
-								<label for="email usuario" class="col-sm-4 col-form-label">Email</label>
-								<div class="col-sm-6">
-									<input type="text" id="emailusuario" name="usuario_email" th:field="*{email}">
-									<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+							<div class="row g-3 align-items-center" >
+								<div class="col-auto">
+									<label for="email usuario" class="col-form-label">Email</label>
 								</div>
+								
+								<div class="col-auto">
+									<input type="text" id="emailusuario" class="form-control" name="usuario_email" placeholder="nombre@example.com" th:field="*{email}">
+								</div>
+								
+								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 							</div><br>
 							
 				
-							<div class="row">
-								<label for="fecha nacimiento" class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
-								<div class="col-sm-6">
-									<input type="date" id="fecha" name="fecha_nacimiento" th:field="*{fechaNac}">
-									<div class="text-danger" th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}"></div>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="fecha nacimiento" class="col-form-label">Fecha de Nacimiento</label>
 								</div>
+								
+								<div class="col-auto">
+									<input type="date" id="fecha" class="form-control" name="fecha_nacimiento" th:field="*{fechaNac}">
+								</div>
+								<div class="text-danger" th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}"></div>
 							</div><br>
 							
-							<div class="row">
-								<label for="telefono usuario" class="col-sm-4 col-form-label">Teléfono</label>
-								<div class="col-sm-6">
-									<input type="text" id="telefonousuario" name="usuario_telefono"  th:field="*{telefono}">
-									<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="telefono usuario" class="col-form-label">Teléfono</label>
 								</div>
+								
+								<div class="col-auto">
+									<input type="text" id="telefonousuario" class="form-control" name="usuario_telefono"  th:field="*{telefono}">
+								</div>
+								<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
 							</div><br>
 							
 							
-							<div  class="row">
-								<label for="genero" class="col-sm-4 col-form-label" >Género</label>
-								<div class="col-sm-6">
+							<div  class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="genero" class="col-form-label" >Género</label>
+								</div>
+								
+								<div class="col-auto">
 
-									<select  id="genero" name="usuario_genero"  th:field="*{genero}">
+									<select  id="genero" name="usuario_genero" class="form-control" th:field="*{genero}">
 									<option value="" selected>Seleccione una opción</option>
 									<option value="Femenino">Femenino</option>
 									<option value="Masculino">Masculino</option>
 									<option value="Otro">Otro</option>
 									</select>
-									<div class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
 								</div>
+								
+								<div class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
 							</div><br>
 							
-							<div class="row">
-								<label for="estatura usuario"  class="col-sm-4 col-form-label" >Estatura</label>
-								<div class="col-sm-6">
-									<input type="text" id="estaturausuario" name="usuario_estatura" th:field="*{estatura}" >
-									<div class="text-danger" th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}"></div>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="estatura usuario"  class="col-form-label" >Estatura</label>
 								</div>
+								
+								<div class="col-auto">
+									<input type="text" id="estaturausuario" class="form-control" name="usuario_estatura" th:field="*{estatura}" >
+								</div>
+								<div class="text-danger" th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}"></div>
 							</div><br>
 							
 								<button  class="btn btn-outline-success" type="submit" th:text="Guardar"></button>
@@ -103,15 +131,19 @@
 								
 						</form>	
 							
-				</div>
+					</div>
 
-	   </div>
-</div>
+	  			 </div>
+			</div>
+		</div>
 	
 		
 	
-	    <footer></footer>
-		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	    <footer th:replace="~{layouts/footer :: footer}"></footer>
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+			        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+			        crossorigin="anonymous"></script>
+		
 	
 	</body>
 </html>

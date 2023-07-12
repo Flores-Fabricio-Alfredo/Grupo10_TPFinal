@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/" lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
-		<title>Registro</title>
-		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</head>
-	
-	
-	<body>
-	
-		<header	th:replace = "~{layouts/header:: header}"></header>
-							<!-- div>
-								<label >Id</label>
-								<input class="inputForm" type="text" id="id" name="usuario_codigo" th:field="*{id}" th:readonly="${edicion}?'readonly'">
-							</div><br> -->
-							
-					<div class="tabyform">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Gestión de datos</title>
+<link rel="stylesheet" th:href="@{../css/estilos.css}">
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<header th:replace="~{/layouts/header :: header}"></header>
+	<div class="container">
+		<div class="tabyform">
 					
 							<h2>Lista de usuarios registrados</h2>
 								  <div class="col-xs-10 col-sm-11 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
@@ -37,7 +32,7 @@
 										
 										</thead>
 										<tbody class="table-group-divider">
-											<!-- Filas de la tabla generadas dinámicamente -->
+
 											<tr  th:each="usu:${usuario}">
 													
 												<td th:text="${usu.id}"></td>
@@ -47,20 +42,97 @@
 												<td th:text="${usu.fechaNac}"></td>
 												<td th:text="${usu.telefono}"></td>
 												<td	th:text="${usu.genero}"></td>
-												<td th:text="${usu.estatura}"></td>
-												<td>
-													<a class ="link" th:href="@{/login/modificar/}+${usu.id}">Editar</a>
-													<a class ="link" th:href="@{/login/eliminar/}+${usu.id}">Eliminar</a>
-												</td>		
+												<td th:text="${usu.estatura}"></td>	
 											</tr>
 										</tbody>
 									 </table>	
 									</div>	
 								 </div>
-								
-								
-	    <footer th:replace = "~{layouts/footer :: footer}"></footer>
-		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+							<div class="text-center m-4"> 
+									<div class="row mt-4">
+										<div class="col-md-8 offset-md-2">
+											<h2>Registros de IMC</h2>
+											<table class="table table-bordered table-striped">
+												<thead class="thead-dark">
+													<tr>
+														<th>IMC</th>
+														<th>Fecha</th>
+													</tr>
+												</thead>
+											 	<tbody th:text="${resultadoIMC}">
+													<tr th:each="imc : ${usurio.imc}">
+														<td th:text="${imc.imc}"></td>
+														<td th:text="${imc.fecha}"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+		<h2>Tabla de Recetas</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Categoria</th>
+					<th>Preparacion</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="receta : ${recetas}">
+					<td th:text="${receta.nombre}"></td>
+					<td th:text="${receta.categoria}"></td>
+					<td th:text="${receta.preparacion}"></td>
+					<td><a class="btn btn-light"
+						th:href="@{/recetas/modificar/}+${receta.id}">Editar</a> <a
+						class="btn btn-dark" th:href="@{/recetas/eliminar/}+${receta.id}">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/recetas/nuevo}"  class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Agregar
+			receta</a>
+
+		<h2>Tabla de ingredientes</h2>
+		<div class="container justify-content-center">
+			<table class="table table-striped">
+				<tr>
+					<th>Ingrediente</th>
+				</tr>
+				<tr th:each="ingr: ${ingredientes}">
+					<td th:text="${ingr.nombre}"></td>
+					<td><a
+						th:href="@{/recetas/ingredientes/modificar/}+${ingr.id}">Editar</a>
+						<a class="cons_button"
+						th:href="@{/recetas/ingredientes/eliminar/}+${ingr.id}">Eliminar</a></td>
+				</tr>
+			</table>
+			<a th:href="@{/recetas/ingredientes/nuevo}"
+				 class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Agregar Ingrediente</a><br>
+		</div>
+		<h2>Tabla de testimonios</h2>
+		<table class="table table-striped">
+			<tr>
+				<th>Autor</th>
+				<th>Fecha</th>
+				<th>Comentario</th>
+			</tr>
+			<tr th:each="test: ${testimonios}">
+				<td
+					th:text="${test.usuario.nombre} + ' ' + ${test.usuario.apellido}"></td>
+				<td th:text="${test.fecha}"></td>
+				<td th:text="${test.comentario}"></td>
+				<td class="btn "><a
+					th:href="@{/testimonios/eliminar/} + ${test.id}">Eliminar</a></td>
+			</tr>
+		</table>
+	</div>
 	
-	</body>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+	
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

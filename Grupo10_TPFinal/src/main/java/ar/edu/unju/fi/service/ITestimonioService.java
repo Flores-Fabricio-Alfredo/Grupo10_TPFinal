@@ -1,25 +1,55 @@
 package ar.edu.unju.fi.service;
 
-
-
 import java.util.List;
 
 import ar.edu.unju.fi.entity.Testimonio;
-import jakarta.validation.Valid;
 
+/**
+ * Interfaz que define los métodos para el servicio de Testimonio.
+ */
 public interface ITestimonioService {
 	
-    List<Testimonio> getLista();
+	/**
+	 * Obtiene la lista de testimonios.
+	 *
+	 * @return Lista de testimonios.
+	 */
+	List<Testimonio> getListaT();
 
+	/**
+	 * Guarda un testimonio.
+	 *
+	 * @param testimonio Testimonio a guardar.
+	 */
+	void guardarTestimonio(Testimonio testimonio);
 
-    public void guardar (@Valid Testimonio testimonio);
+	/**
+	 * Obtiene un testimonio por su código.
+	 *
+	 * @param id Código del testimonio.
+	 * @return Testimonio encontrado.
+	 */
+	public Testimonio getBy(Long id);
 
-    public Testimonio getBy(Long Id);
+	/**
+	 * Elimina un testimonio.
+	 *
+	 * @param testimonioEncontrado Testimonio a eliminar.
+	 */
+	void eliminarTestimonio(Testimonio testimonioEncontrado);
 
-    public void modificar (@Valid Testimonio testimonio);
-
-    public void eliminar (Testimonio testimonioEncontado);
-
-    public Testimonio getTestimonio();
-
+	/**
+	 * Obtiene un testimonio nuevo.
+	 *
+	 * @return Testimonio nuevo.
+	 */
+	Testimonio getTestimonio();
+	
+	/**
+	 * Obtiene un testimonio por el ID de usuario.
+	 *
+	 * @param userId ID del usuario asociado al testimonio.
+	 * @return Testimonio encontrado.
+	 */
+	Testimonio getByUserId(Long userId);
 }
