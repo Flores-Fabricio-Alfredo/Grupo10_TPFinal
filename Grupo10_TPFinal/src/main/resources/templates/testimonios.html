@@ -7,28 +7,82 @@
 		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</head>
-	<body>
-	<header th:replace ="~{layouts/header :: header}"></header>
-	<h1>Testimonios</h1>
-		<img width="150" alt="logo" th:src="@{/images/logo.png}">
-		<p>Aqui encontraras testimonios de gente que uso nuestras recetas de salud y asi tambien nuestros consejos para mejorar tu calidad de vida.</p>
-		 <a th:href="@{/nuevoTestimonio}">Testimonios Nuevos</a>
-		<div class="card mb-3" style="max-width: 540px;">
-		  <div class="row g-0">
-		    <div  class="col-md-4">
-		      <img src="..." class="img-fluid rounded-start" alt="...">
-		    </div>
-		    <div class="col-md-8" >
-		      <div class="card-body" th:each = "test:${testimonios}">
-		        <h5 th:text = "${test.usuario} " class="card-title"></h5>
-		        <p class="card-text" th:text = "${test.comentario} "> </p>
-		        <p class="card-text" th:text = "${test.fechaInicio} "><small class="text-muted" ></small> </p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	<footer></footer>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	
-	</body>
+	<body >
+ 	<header th:replace="~{/layouts/header :: header}"></header>
+ 	
+ 	<div class="container">
+		<h2 class="text-center m-3 my-4">Testimonios de otros usuarios</h2>
+		
+	
+	<div class="row justify-content-center mb-4">
+	<div class="card col-12 col-md-6  text-center">
+		<ul th:each="testimonio : ${testimonioLista}" class="list-unstyled ms-3">	
+			<li class="d-flex">
+			<img src="../images/usuario.png"
+				class="img-responsive img-rounded mt-1"
+				style="max-height: 25px; max-width: 25px;">
+			<p class="fs-5 ms-3"
+					th:text="'Autor: ' + ${testimonio.usuario.nombre} + ' ' + ${testimonio.usuario.apellido} "></p>
+			</li>
+			<li><p th:text="${testimonio.comentario}" class="text-center"></p></li>
+			</ul>
+	</div>
+	</div>
+
+	
+<h4 class="text-center mb-3">¿Deseas ingresar tu testimonio?  ¡Ingresa con tu id de usuario!</h4>
+	<form th:action="@{/testimonios/guardar}" method="POST" class="text-center mb-5">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6">
+			 <div class="form-group">
+				<label for="id" class="mb-2">Ingrese su id:</label> <input
+					type="number" id="id" name="id" onchange="actualizarId()" value=0 class="form-control">
+				<div th:if="${error}" class="alert alert-danger">
+					<p th:text="${error}"></p>
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6">
+			 <div class="form-group">
+				<label for="comentario" class="m-2">Ingrese su testimonio:</label>
+				<textarea id="comentario" name="comentario"
+					placeholder="Ingrese su testimonio" class="form-control"></textarea>
+				<p class="fs-4" th:text="${invalid}"></p>
+			</div>
+			</div>
+		
+		</div>
+		
+		 <div class="row justify-content-center mt-3">
+        	<div class="col-12 col-md-6">
+		<input type="submit" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;" value="Guardar testimonio">
+		</div>
+		</div>
+	
+	
+	</form>
+</div>
+
+
+
+
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+	
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+        function actualizarId() {
+            var precioInput = document.getElementById('id');
+            if (precioInput.value.trim() === '') {
+                precioInput.value = '0';
+            }
+        }
+    </script>
+</body>
+
 </html>
