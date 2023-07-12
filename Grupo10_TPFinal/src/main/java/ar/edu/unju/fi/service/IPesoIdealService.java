@@ -4,9 +4,20 @@ import java.time.LocalDate;
 
 public interface IPesoIdealService {
 	
-	//Calculo del peso ideal
+	/**
+     * Calcula el peso ideal basado en la estatura y la edad.
+     *
+     * @param estatura La estatura del individuo.
+     * @param edad     La edad del individuo.
+     * @return El peso ideal calculado.
+     */
 	Double calcularPesoIdeal(Double estatura, int edad);
 	
-	//Calculo de edad
+	/**
+     * Calcula la edad en años a partir de la fecha de nacimiento.
+     *
+     * @param fechaNacimiento La fecha de nacimiento del individuo.
+     * @return La edad calculada en años.
+     */
 	int calcularEdad(LocalDate fechaNacimiento);
 }
