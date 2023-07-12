@@ -40,7 +40,6 @@ public class Receta {
 	@NotEmpty(message="Debe ingresar como realizó su receta")
 	private String preparacion;
 	@Column(name="receta_imagen", nullable=false)
-	@NotNull(message="Seleccione un archivo imagen")
 	private String imagen;
 	@Column(name="receta_estado", nullable=false)
 	private boolean estado;
