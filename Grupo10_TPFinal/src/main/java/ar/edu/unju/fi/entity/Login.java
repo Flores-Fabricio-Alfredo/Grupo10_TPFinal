@@ -11,6 +11,13 @@ public class Login {
 		
 	}
 
+	 /**
+     * Crea un objeto Login con el usuario y contraseña especificados.
+     *
+     * @param usuarioLogin   El nombre de usuario.
+     * @param passwordLogin  La contraseña.
+     */
+	
 	public Login(String usuarioLogin, String passwordLogin) {
 		super();
 		this.usuarioLogin = usuarioLogin;

@@ -36,6 +36,13 @@ public class Ingrediente {
 		
 	}
 	
+	 /**
+     * Crea un objeto Ingrediente con el ID y nombre especificados.
+     *
+     * @param id     El ID del ingrediente.
+     * @param nombre El nombre del ingrediente.
+     */
+	
 	public Ingrediente(Long id,String nombre) {
 		this.nombre = nombre;
 		this.id=id;

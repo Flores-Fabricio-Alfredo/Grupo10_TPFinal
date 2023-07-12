@@ -61,51 +61,153 @@ public class Receta {
 		this.imagen = imagen;
 		this.id = id;
 	}
+	
+	 /**
+     * Obtiene el ID de la receta.
+     *
+     * @return El ID de la receta.
+     */
+	
 	public Long getId() {
 		return id;
 	}
+	
+	/**
+     * Establece el ID de la receta.
+     *
+     * @param id El ID de la receta.
+     */
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	 /**
+     * Obtiene el nombre de la receta.
+     *
+     * @return El nombre de la receta.
+     */
+	
 	public String getNombre() {
 		return nombre;
 	}
+	
+	 /**
+     * Establece el nombre de la receta.
+     *
+     * @param nombre El nombre de la receta.
+     */
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	/**
+     * Obtiene la categoría de la receta.
+     *
+     * @return La categoría de la receta.
+     */
+	
 	public String getCategoria() {
 		return categoria;
 	}
+	
+	 /**
+     * Establece la categoría de la receta.
+     *
+     * @param categoria La categoría de la receta.
+     */
+	
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+	 /**
+     * Obtiene la preparación de la receta.
+     *
+     * @return La preparación de la receta.
+     */
+	
 	public String getPreparacion() {
 		return preparacion;
 	}
+	
+	/**
+     * Establece la preparación de la receta.
+     *
+     * @param preparacion La preparación de la receta.
+     */
+	
 	public void setPreparacion(String preparacion) {
 		this.preparacion = preparacion;
 	}
+	
+	/**
+     * Obtiene la imagen de la receta.
+     *
+     * @return La imagen de la receta.
+     */
+	
 	public String getImagen() {
 		return imagen;
 	}
+	
+	/**
+     * Establece la imagen de la receta.
+     *
+     * @param imagen La imagen de la receta.
+     */
+	
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+	
+	 /**
+     * Obtiene el estado de la receta.
+     *
+     * @return El estado de la receta.
+     */
+	
 	public boolean getEstado() {
 		return estado;
 	}
+	
+	 /**
+     * Establece el estado de la receta.
+     *
+     * @param estado El estado de la receta.
+     */
+	
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+	
+	/**
+     * Obtiene la lista de ingredientes de la receta.
+     *
+     * @return La lista de ingredientes de la receta.
+     */
 	
 	public List<Ingrediente> getIngredientes() {
 		return ingredientes;
 	}
 
+	/**
+     * Establece la lista de ingredientes de la receta.
+     *
+     * @param ingredientes La lista de ingredientes de la receta.
+     */
+	
 	public void setIngredientes(List<Ingrediente> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 
+	 /**
+     * Añade un ingrediente a la lista de ingredientes de la receta.
+     *
+     * @param ingrediente El ingrediente a añadir.
+     */
+	
 	public void añadirIngrediente(Ingrediente ingrediente) {
 		this.ingredientes.add(ingrediente);
 	}
