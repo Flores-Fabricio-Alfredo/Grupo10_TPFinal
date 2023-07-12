@@ -1,144 +1,122 @@
+<!-- Documentación: Categorías de Recetas -->
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Categorias de Recetas</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-	crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>Categorias de Recetas</title>
+	<link rel="stylesheet" th:href="@{../css/estilos.css}">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+		crossorigin="anonymous">
 </head>
 <body>
+	<!-- Encabezado -->
 	<header th:replace="~{layouts/header :: header}"></header>
 
+	<!-- Título principal -->
 	<h1 class="fs-1 text-center">Seleccione una categoría de recetas</h1>
-	<article>
-
-		<div class="d-flex-inline">
-			<ul
-				class="list-unstyled list-group list-group-horizontal justify-content-center">
-
-
-				<li class="list-group-item">
-					<div class="card ms-2" style="width: 18rem;">
-						<img src="../images/carne.png" class="card-img-top " alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Recetas de Carne</h5>
-							<p class="card-text">La carne puede ser preparada de muchas
-								maneras con muchos tipos de cocción. Descubrelas en ésta
-								categoría.</p>
-							<a th:href="@{/recetas/} + 'recetas de Carnes'" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-						</div>
+	
+	<!-- Contenedor principal -->
+	<div class="container">
+		<div class="row">
+			<!-- Categoría de Recetas: Carne -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/3.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Carne</h5>
+						<p class="card-text">La carne puede ser preparada de muchas maneras con muchos tipos de cocción. Descúbrelas en esta categoría.</p>
+						<a href="/recetas/recetas-de-carnes" class="btn btn-primary">Buscar</a>
 					</div>
-				</li>
-
-				<li class="list-group-item">
-					<div class="card ms-2" style="width: 18rem;">
-						<img src="../images/bebidas.png" class="card-img-top mx-auto"
-							alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Recetas de Bebidas</h5>
-							<p class="card-text">Hay muchas texturas para bebidas, y de
-								distintos tipos. ¡Encuentralos en ésta página!</p>
-							<a th:href="@{/recetas/} + 'recetas de Bebidas'" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-						</div>
+				</div>
+			</div>
+			<!-- Categoría de Recetas: Bebidas -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/6.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Bebidas</h5>
+						<p class="card-text">Hay muchas texturas para bebidas, y de distintos tipos. ¡Encuéntralos en esta página!</p>
+						<a href="/recetas/recetas-de-bebidas" class="btn btn-primary">Buscar</a>
 					</div>
-				</li>
-
-				<li class="list-group-item">
-					<div class="card ms-2" style="width: 18rem;">
-						<img src="../images/dulce.jpg" class="card-img-top mx-auto"
-							alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Recetas Dulces</h5>
-							<p class="card-text">Lo dulce no necesariamente es dañino
-								para la salud, encuentra los mejores postres y dulces en ésta
-								categoría.</p>
-							<a th:href="@{/recetas/} + 'recetas de Dulces'" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-						</div>
+				</div>
+			</div>
+			<!-- Categoría de Recetas: Dulces -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/4.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas Dulces</h5>
+						<p class="card-text">Lo dulce no necesariamente es dañino para la salud, encuentra los mejores postres y dulces en esta categoría.</p>
+						<a href="/recetas/recetas-de-dulces" class="btn btn-primary">Buscar</a>
 					</div>
-				</li>
-
-
-
-				<li class="list-group-item">
-					<div class="card ms-2" style="width: 18rem;">
-						<img src="../images/ensaladas.jpg" class="card-img-top mx-auto"
-							alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Recetas de Ensaladas</h5>
-							<p class="card-text">Distintos acompañamientos saludables
-								para tus comidas. Aprende de las mejores recetas de ensaladas.</p>
-							<a th:href="@{/recetas/} + 'recetas de Ensaladas'" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<ul
-				class="list-unstyled list-group list-group-horizontal justify-content-center">
-				<li class="list-group-item">
-					<div class="card ms-2" style="width: 18rem;">
-						<img src="../images/cereales.jpg" class="card-img-top mx-auto"
-							alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Recetas de Cereales y Legumbres</h5>
-							<p class="card-text">Las mejores preparaciones con cereales
-								y/o legumbres.</p>
-							<a th:href="@{/recetas/} + 'recetas de Legumbres y Cereales'"
-								class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-						</div>
-					</div>
-				</li>
-
-				<li class="list-group-item">
-					<div class="card ms-2" style="width: 18rem;">
-						<img src="../images/pescados.jpg" class="card-img-top mx-auto"
-							alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Recetas de Pescados</h5>
-							<p class="card-text">La fauna marítima es deliciosa,
-								sobretodo con una buena preparación y sazón correcto.
-								¡Descubrelos!</p>
-							<a th:href="@{/recetas/} + 'recetas de Pescados'" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-						</div>
-					</div>
-				</li>
-
-
-				<ul class="list-unstyled list-group list-group-horizontal">
-					<li class="list-group-item">
-						<div class="card ms-2" style="width: 18rem;">
-							<img src="../images/pan.jpg" class="card-img-top mx-auto"
-								alt="...">
-							<div class="card-body d-block">
-								<h5 class="card-title">Recetas de Pan</h5>
-								<p class="card-text">Hay varias formas y tipos de panes, en
-									ésta categoría encontraras tu favorita</p>
-								<a th:href="@{/recetas/} + 'recetas de Pan'" class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-							</div>
-						</div>
-					</li>
-
-					<li class="list-group-item">
-						<div class="card ms-2" style="width: 18rem;">
-							<img src="../images/sopas.jpg" class="card-img-top mx-auto"
-								alt="...">
-							<div class="card-body d-block">
-								<h5 class="card-title">Recetas de Sopas y Cremas</h5>
-								<p class="card-text">Las mejores preparaciones de sopas y
-									cremas. ¡Animate a descubrir!</p>
-								<a th:href="@{/recetas/} + 'recetas de Sopas y Cremas'"
-									class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Buscar</a>
-							</div>
-						</div>
-					</li>
-
-				</ul>
+				</div>
+			</div>
 		</div>
-	</article>
+		<div class="row">
+			<!-- Categoría de Recetas: Ensaladas -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/1.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Ensaladas</h5>
+						<p class="card-text">Distintos acompañamientos saludables para tus comidas. Aprende de las mejores recetas de ensaladas.</p>
+						<a href="/recetas/recetas-de-ensaladas" class="btn btn-primary">Buscar</a>
+					</div>
+				</div>
+			</div>
+			<!-- Categoría de Recetas: Cereales y Legumbres -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/7.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Cereales y Legumbres</h5>
+						<p class="card-text">Las mejores preparaciones con cereales y/o legumbres.</p>
+						<a href="/recetas/recetas-de-legumbres-y-cereales" class="btn btn-primary">Buscar</a>
+					</div>
+				</div>
+			</div>
+			<!-- Categoría de Recetas: Pescados -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/8.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Pescados</h5>
+						<p class="card-text">La fauna marítima es deliciosa, sobretodo con una buena preparación y sazón correcto. ¡Descúbrelos!</p>
+						<a href="/recetas/recetas-de-pescados" class="btn btn-primary">Buscar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Categoría de Recetas: Pan -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/2.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Pan</h5>
+						<p class="card-text">Hay varias formas y tipos de panes, en esta categoría encontrarás tu favorita</p>
+						<a href="/recetas/recetas-de-pan" class="btn btn-primary">Buscar</a>
+					</div>
+				</div>
+			</div>
+			<!-- Categoría de Recetas: Sopas y Cremas -->
+			<div class="col-md-4">
+				<div class="card">
+					<img src="../images/5.jpeg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Recetas de Sopas y Cremas</h5>
+						<p class="card-text">Las mejores preparaciones de sopas y cremas. ¡Anímate a descubrir!</p>
+						<a href="/recetas/recetas-de-sopas-y-cremas" class="btn btn-primary">Buscar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<!-- Pie de página -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
