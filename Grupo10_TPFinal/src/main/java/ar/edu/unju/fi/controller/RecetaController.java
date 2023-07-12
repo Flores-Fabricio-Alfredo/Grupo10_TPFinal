@@ -26,6 +26,14 @@ import ar.edu.unju.fi.service.IRecetaService;
 import ar.edu.unju.fi.util.UploadFile;
 
 
+
+/**
+ * El controlador RecetaController gestiona las solicitudes relacionadas con las recetas.
+ */
+/**
+ * @author Naima Farja
+ *
+ */
 @Controller
 @RequestMapping("/recetas")
 public class RecetaController {
@@ -39,19 +47,36 @@ public class RecetaController {
 	@Autowired
 	private ICommonService commonService;
 
+	/**
+	 * Maneja la solicitud GET a /recetas y muestra la página de categorías de recetas.
+	 *
+	 * @param model el modelo de la vista
+	 * @return el nombre de la vista "categorias"
+	 */
 	@GetMapping
 	public String getCategoriaRecetasPage(Model model) {
 		return "categorias";
 	}
 
-
-	@GetMapping("/{categorias}")
+	/**
+	 * Maneja la solicitud GET a /recetas/{categoria} y muestra la página de recetas para una categoría específica.
+	 *
+	 * @param model     el modelo de la vista
+	 * @param categoria el nombre de la categoría de recetas
+	 * @return el nombre de la vista "recetas"
+	 */
+	@GetMapping("/{categoria}")
 	public String getRecetasPage(Model model, @PathVariable(value = "categoria") String categoria) {
 		model.addAttribute("recetas", recetaService.getListaCategoria(categoria));
 		return "recetas";
 	}
 
-
+	/**
+	 * Maneja la solicitud GET a /recetas/nuevo y muestra la página para agregar una nueva receta.
+	 *
+	 * @param model el modelo de la vista
+	 * @return el nombre de la vista "receta_nueva"
+	 */
 	@GetMapping("/nuevo")
 	public String getNuevaRecetaPage(Model model) {
 		boolean edicion = false;
@@ -63,6 +88,13 @@ public class RecetaController {
 		return "receta_nueva";
 	}
 
+	/**
+	 * Maneja la solicitud GET a /recetas/modificar/{id} y muestra la página para modificar una receta existente.
+	 *
+	 * @param model el modelo de la vista
+	 * @param id    el ID de la receta a modificar
+	 * @return el nombre de la vista "receta_nueva"
+	 */
 	@GetMapping("/modificar/{id}")
 	public String getModificarRecetaPage(Model model, @PathVariable(value = "id") Long id) {
 		boolean edicion = true;
@@ -72,13 +104,21 @@ public class RecetaController {
 		model.addAttribute("categorias", commonService.getRecetasCategoria());
 		model.addAttribute("edicion", edicion);
 		model.addAttribute("listaIngredientes", listaIngredientes);
-
 		return "receta_nueva";
 	}
 
+	/**
+	 * Maneja la solicitud POST a /recetas/modificar y procesa la modificación de una receta existente.
+	 *
+	 * @param receta  el objeto Receta a modificar
+	 * @param result  el resultado de la validación
+	 * @param imagen  el archivo de imagen de la receta
+	 * @return un objeto ModelAndView que redirige a "/gestion_de_datos" si la modificación fue exitosa
+	 * @throws Exception si ocurre algún error durante el procesamiento
+	 */
 	@PostMapping("/modificar")
-	public ModelAndView postModificarRecetaPage(@Valid @ModelAttribute("receta") Receta receta, BindingResult result,
-			@RequestParam("file") MultipartFile imagen) throws Exception {
+	public ModelAndView postModificarRecetaPage(@Valid @ModelAttribute("receta") Receta receta,
+			BindingResult result, @RequestParam("file") MultipartFile imagen) throws Exception {
 		ModelAndView modelView = new ModelAndView("redirect:/gestion_de_datos");
 		boolean edicion = true;
 		List<Ingrediente> listaIngredientes = ingredienteRepository.findByEstado(true);
@@ -105,7 +145,6 @@ public class RecetaController {
 		if (areceta.getImagen() != null) {
 			receta.setImagen(areceta.getImagen());
 		}
-
 		if (!imagen.isEmpty()) {
 			String uniqueFileName = uploadFile.copy(imagen);
 			receta.setImagen(uniqueFileName);
@@ -115,14 +154,20 @@ public class RecetaController {
 		return modelView;
 	}
 
-
+	/**
+	 * Maneja la solicitud POST a /recetas/guardar y procesa el guardado de una nueva receta.
+	 *
+	 * @param receta  el objeto Receta a guardar
+	 * @param result  el resultado de la validación
+	 * @param imagen  el archivo de imagen de la receta
+	 * @return un objeto ModelAndView que redirige a "/gestion_de_datos" si el guardado fue exitoso
+	 * @throws Exception si ocurre algún error durante el procesamiento
+	 */
 	@PostMapping("/guardar")
 	public ModelAndView guardarReceta(@Valid @ModelAttribute("receta") Receta receta, BindingResult result,
 			@RequestParam("file") MultipartFile imagen) throws Exception {
-
 		ModelAndView modelView = new ModelAndView("redirect:/gestion_de_datos");
 		List<Ingrediente> listaIngredientes = ingredienteRepository.findByEstado(true);
-
 		if (result.hasErrors()) {
 			modelView.setViewName("receta_nueva");
 			modelView.addObject("receta", receta);
@@ -146,34 +191,39 @@ public class RecetaController {
 				if (areceta.getImagen() != null) {
 					receta.setImagen(areceta.getImagen());
 				}
-				
 				receta.setId(receta.getId() - 1);
 				recetaService.guardar(receta);
-
 			} else {
 				if (!imagen.isEmpty()) {
 					String uniqueFileName = uploadFile.copy(imagen);
 					receta.setImagen(uniqueFileName);
 				}
 			}
-			
 			recetaService.guardar(receta);
 			modelView.addObject("recetas", recetaService.getLista());
 		}
-
 		return modelView;
 	}
 
-
+	/**
+	 * Maneja la solicitud GET a /recetas/eliminar/{id} y elimina una receta existente.
+	 *
+	 * @param id el ID de la receta a eliminar
+	 * @return un objeto ModelAndView que redirige a "/gestion_de_datos"
+	 */
 	@GetMapping("/eliminar/{id}")
 	public String eliminarRecetas(@PathVariable(value = "id") Long id) {
 		Receta recetaEncontrada = recetaService.getBy(id);
 		recetaService.eliminar(recetaEncontrada);
-
 		return "redirect:/gestion_de_datos";
 	}
 
-
+	/**
+	 * Maneja la solicitud GET a /recetas/uploads/{filename} y devuelve una respuesta con el recurso de imagen solicitado.
+	 *
+	 * @param filename el nombre de archivo de la imagen
+	 * @return una ResponseEntity que contiene el recurso de imagen
+	 */
 	@GetMapping("/uploads/{filename}")
 	public ResponseEntity<Resource> goImage(@PathVariable String filename) {
 		Resource resource = null;
@@ -187,7 +237,12 @@ public class RecetaController {
 				.body(resource);
 	}
 
-
+	/**
+	 * Maneja la solicitud GET a /recetas/mostrar/{id} y muestra la página para mostrar los detalles de una receta.
+	 *
+	 * @param id el ID de la receta a mostrar
+	 * @return un objeto ModelAndView que muestra los detalles de la receta
+	 */
 	@GetMapping("/mostrar/{id}")
 	public ModelAndView getPageMostrarReceta(@PathVariable("id") Long id) {
 		ModelAndView modelView = new ModelAndView("recetas");
