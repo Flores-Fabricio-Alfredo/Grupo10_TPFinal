@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org/" lang="es">
 	<head>
 		<meta charset="UTF-8">
+		<title>Nuevo usuario</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximun-scale=1, user-scalable=no">
 		<title>Registro</title>
+		<link rel="stylesheet" th:href="@{../css/estilos.css}">
 		<link th:rel= "stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</head>
@@ -129,15 +131,18 @@
 								
 						</form>	
 							
-				</div>
+					</div>
 
-	   </div>
+	  			 </div>
+			</div>
 		</div>
-</div>
 	
 		
 	
-	    <footer></footer>
+	    <footer th:replace="~{layouts/footer :: footer}"></footer>
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+			        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+			        crossorigin="anonymous"></script>
 		
 	
 	</body>

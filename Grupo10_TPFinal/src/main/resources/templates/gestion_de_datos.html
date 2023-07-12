@@ -32,7 +32,7 @@
 										
 										</thead>
 										<tbody class="table-group-divider">
-											<!-- Filas de la tabla generadas dinámicamente -->
+
 											<tr  th:each="usu:${usuario}">
 													
 												<td th:text="${usu.id}"></td>
@@ -42,36 +42,35 @@
 												<td th:text="${usu.fechaNac}"></td>
 												<td th:text="${usu.telefono}"></td>
 												<td	th:text="${usu.genero}"></td>
-												<td th:text="${usu.estatura}"></td>
-												<td>
-													<a class ="link" th:href="@{/login/modificar/}+${usu.id}">Editar</a>
-													<a class ="link" th:href="@{/login/eliminar/}+${usu.id}">Eliminar</a>
-												</td>		
+												<td th:text="${usu.estatura}"></td>	
 											</tr>
 										</tbody>
 									 </table>	
 									</div>	
 								 </div>
-		<!-- Tabla de IMC y modificaciones posibles -->
-		<h2>Tabla de IMC</h2>
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th>IMC</th>
-					<th>Fecha</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="imc : ${indice}">
-					<td th:text="${imc.imc}"></td>
-					<td th:text="${imc.fecha}"></td>
-					<td><a class="cons_button"
-						th:href="@{/calcular/eliminar/}+${imc.id}">Eliminar</a></td>
-				</tr>
-			</tbody>
-		</table>
 
-		<!-- Tabla de recetas y modificaciones posibles -->
+							<div class="text-center m-4"> 
+									<div class="row mt-4">
+										<div class="col-md-8 offset-md-2">
+											<h2>Registros de IMC</h2>
+											<table class="table table-bordered table-striped">
+												<thead class="thead-dark">
+													<tr>
+														<th>IMC</th>
+														<th>Fecha</th>
+													</tr>
+												</thead>
+											 	<tbody th:text="${resultadoIMC}">
+													<tr th:each="imc : ${usurio.imc}">
+														<td th:text="${imc.imc}"></td>
+														<td th:text="${imc.fecha}"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
 		<h2>Tabla de Recetas</h2>
 		<table class="table table-bordered table-striped">
 			<thead>
@@ -79,7 +78,7 @@
 					<th>Nombre</th>
 					<th>Categoria</th>
 					<th>Preparacion</th>
-					<th>Descripcion Corta</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -87,7 +86,6 @@
 					<td th:text="${receta.nombre}"></td>
 					<td th:text="${receta.categoria}"></td>
 					<td th:text="${receta.preparacion}"></td>
-					<td th:text="${receta.descripcion}"></td>
 					<td><a class="btn btn-light"
 						th:href="@{/recetas/modificar/}+${receta.id}">Editar</a> <a
 						class="btn btn-dark" th:href="@{/recetas/eliminar/}+${receta.id}">Eliminar</a></td>
@@ -97,7 +95,6 @@
 		<a th:href="@{/recetas/nuevo}"  class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Agregar
 			receta</a>
 
-		<!-- Tabla de ingredientes y modificaciones posibles -->
 		<h2>Tabla de ingredientes</h2>
 		<div class="container justify-content-center">
 			<table class="table table-striped">
@@ -115,7 +112,6 @@
 			<a th:href="@{/recetas/ingredientes/nuevo}"
 				 class="2 btn" style="background-color: #45BFA9; color: white; outline: none;">Agregar Ingrediente</a><br>
 		</div>
-		<!-- Tabla de testimonios y modificaciones posibles -->
 		<h2>Tabla de testimonios</h2>
 		<table class="table table-striped">
 			<tr>

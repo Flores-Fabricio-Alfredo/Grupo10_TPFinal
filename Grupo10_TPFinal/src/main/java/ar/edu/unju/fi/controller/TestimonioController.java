@@ -24,15 +24,23 @@ public class TestimonioController {
 	ITestimonioService testimonioService;
 	@Autowired
 	IUsuarioRepository usuarioRepository;
+	@Autowired
+	Testimonio testimonio;
 
 	@GetMapping
 	public String getTestimonioPage(Model model) {
-		model.addAttribute("testimonioLista", testimonioService.getListaT());
+		model.addAttribute("testimonio", testimonioService.getListaT());
 		return "testimonios";
+	}
+	
+	@GetMapping("/nuevotest")
+	public String nuevoTestimonio(Model model) {
+		model.addAttribute("testimonio", testimonio);
+		return "testimonio_nuevo";
 	}
 
     @PostMapping("/guardar")
-    public String guardarTestimonio(Model model, @RequestParam(value = "id") Long id,
+    public String guardarTestimonio(Model model, @RequestParam(value = "usuid") Long id,
             @RequestParam(value = "comentario") String comentario, RedirectAttributes attributes) {
         Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
        
