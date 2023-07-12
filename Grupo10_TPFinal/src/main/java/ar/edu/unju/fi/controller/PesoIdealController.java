@@ -28,12 +28,30 @@ public class PesoIdealController {
     */
 	  @Autowired
 	  private IPesoIdealService pesoIdealService;
-
+ 
+	  /**
+	     * Maneja las solicitudes GET a la URL "/pesoideal".
+	     * Devuelve la plantilla de vista "pesoideal".
+	     *
+	     * @return El nombre de la vista "pesoideal".
+	     */
 	    
 	@GetMapping
 	public String getPesoIdealPage() {
 		return "pesoideal";
 	}
+	
+	/**
+     * Maneja las solicitudes POST a la URL "/pesoideal/calculo" para calcular el peso ideal.
+     * Recupera el usuario por su ID desde el repositorio y calcula el peso ideal basado en la altura y la edad del usuario.
+     * Agrega el peso ideal calculado al modelo.
+     * Si el ID del usuario no se encuentra, agrega un mensaje de error al modelo.
+     * Devuelve la plantilla de vista "pesoideal".
+     *
+     * @param id    El ID del usuario.
+     * @param model El objeto modelo para pasar datos a la vista.
+     * @return El nombre de la vista "pesoideal".
+     */
 	
 	@PostMapping("/calculo")
 	public String calcularPesoIdeal(@RequestParam(value = "id") Long id, Model model) {
