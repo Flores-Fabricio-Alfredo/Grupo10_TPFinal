@@ -9,33 +9,36 @@ import ar.edu.unju.fi.entity.Ingrediente;
 import ar.edu.unju.fi.repository.IIngredienteRepository;
 import ar.edu.unju.fi.service.IIngredienteService;
 
-import jakarta.validation.Valid;
-
 @Service("ingredienteServiceMysqlImp")
-public class IngredienteServiceMysqlImp implements IIngredienteService{
-	
+public class IngredienteServiceMysqlImp implements IIngredienteService {
 	@Autowired
-	private IIngredienteRepository ingredienteRepository;
-	
+	Ingrediente ingrediente;
 	@Autowired
-	private Ingrediente ingrediente;
+	IIngredienteRepository ingredienteRepository;
 	
 	@Override
-	public List<Ingrediente>getAllIgredientes(){
-		List<Ingrediente> ingredientes = (List<Ingrediente>) ingredienteRepository.findAll();
-		return ingredientes;
+	public List<Ingrediente> getListaingrediente() {
+		return ingredienteRepository.findByEstado(true);
 	}
-	
+
 	@Override
-	public void guardar (@Valid Ingrediente ingrediente) {
+	public void guardar(Ingrediente ingrediente) {
+		ingrediente.setEstado(true);
 		ingredienteRepository.save(ingrediente);
 	}
-	
+
 	@Override
 	public Ingrediente getBy(Long id) {
-		ingrediente =  ingredienteRepository.findById(id).get();
-		return ingrediente;
+		return ingredienteRepository.findById(id).get();
 	}
+
+	@Override
+	public void eliminar(Ingrediente ingredienteEncontrado) {
+		ingredienteEncontrado.setEstado(false);
+		ingredienteRepository.save(ingredienteEncontrado);
+		
+	}
+
 	@Override
 	public Ingrediente getIngrediente() {
 		return ingrediente;

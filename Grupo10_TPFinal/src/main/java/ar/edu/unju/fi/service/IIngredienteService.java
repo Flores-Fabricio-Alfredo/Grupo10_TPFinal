@@ -1,17 +1,18 @@
 package ar.edu.unju.fi.service;
 
 import java.util.List;
+
 import ar.edu.unju.fi.entity.Ingrediente;
-import jakarta.validation.Valid;
 
-public interface IIngredienteService{
+public interface IIngredienteService {
 	
-	public void guardar (@Valid Ingrediente ingrediente);
-	
+	List<Ingrediente> getListaingrediente();
+
+	void guardar(Ingrediente ingred);
+
 	Ingrediente getBy(Long id);
-	
-	public Ingrediente getIngrediente();
 
-	List<Ingrediente> getAllIgredientes();
+	void eliminar(Ingrediente ingredienteEncontrado);
 
+	Ingrediente getIngrediente();
 }
