@@ -20,6 +20,13 @@ import ar.edu.unju.fi.service.IUsuarioService;
 @RequestMapping("/")
 public class CalcularImcController {
 
+	/**
+	 * Inyección de dependencias utilizando la anotación @Autowired.
+	 * Se inyectan las siguientes dependencias:
+	 * - IIndiceMasaCorporalService: Servicio para el cálculo del Índice de Masa Corporal (IMC).
+	 * - IUsuarioRepository: Repositorio para acceder a los datos de los usuarios.
+	 * - IUsuarioService: Servicio para operaciones relacionadas con los usuarios.
+	 */
 	@Autowired
 	private IIndiceMasaCorporalService indiceMasaCorporalService;
 	@Autowired
@@ -27,6 +34,12 @@ public class CalcularImcController {
 	@Autowired
 	private IUsuarioService usuarioService;
 
+	/**
+	 * Método controlador para obtener la página de cálculo del Índice de Masa Corporal (IMC).
+	 * 
+	 * @param model El modelo utilizado para pasar datos a la vista.
+	 * @return El nombre de la vista para mostrar la calculadora.
+	 */
 	@GetMapping("/calcular")
 	
 	public String getCalcularImcPage(Model model) {
@@ -35,7 +48,14 @@ public class CalcularImcController {
 		return "calculadora_imc";
 	}
 
-	
+	/**
+	 * Método controlador para calcular el Índice de Masa Corporal (IMC) de un usuario.
+	 * 
+	 * @param id     El ID del usuario para el cálculo del IMC.
+	 * @param peso   El peso del usuario en kilogramos.
+	 * @param model  El modelo utilizado para pasar datos a la vista.
+	 * @return       El nombre de la vista para mostrar el resultado del cálculo del IMC.
+	 */
 	@PostMapping("/calcular/calculo")
 	public String calcularIMC(@RequestParam(value = "id") Long id, @RequestParam(value = "peso") Double peso,
 			Model model) {
@@ -68,7 +88,13 @@ public class CalcularImcController {
 		}
 		return "imc_tabla";
 	}
-
+	
+	/**
+	 * Método controlador para eliminar un usuario y su correspondiente Índice de Masa Corporal (IMC) por su ID.
+	 *
+	 * @param id El ID del usuario a eliminar.
+	 * @return Redirecciona a la página de gestión de datos después de eliminar el usuario.
+	 */
 	@GetMapping("/eliminar/{id}")
 	public String eliminarUsuario(@PathVariable(value = "id") Long id) {
 		IndiceMasaCorporal imc = indiceMasaCorporalService.getBy(id);

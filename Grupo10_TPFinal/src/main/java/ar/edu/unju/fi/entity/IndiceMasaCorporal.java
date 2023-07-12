@@ -20,6 +20,15 @@ import jakarta.persistence.Table;
 @Table(name="imc")
 public class IndiceMasaCorporal {
 	
+	/**
+	 * Clase que representa el modelo de datos para el Índice de Masa Corporal (IMC).
+	 * 
+	 * - @Id: Anotación que indica que el campo 'id' es la clave primaria de la entidad.
+	 * - @GeneratedValue: Anotación que especifica la estrategia de generación de valores para el campo 'id'.
+	 * - @Column: Anotación que mapea el campo a una columna de la base de datos.
+	 * - @ManyToOne: Anotación que indica una relación de muchos a uno con la entidad 'Usuario'.
+	 * - @JoinColumn: Anotación que especifica la columna utilizada para la relación con la entidad 'Usuario'.
+	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="imc_id")
@@ -42,9 +51,23 @@ public class IndiceMasaCorporal {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 	
+	/**
+	 * Constructor vacío de la clase IndiceMasaCorporal.
+	 * 
+	 * Este constructor no recibe ningún parámetro y se utiliza para crear una instancia de la clase IndiceMasaCorporal sin inicializar sus campos.
+	 * 
+	 */
 	public IndiceMasaCorporal() {
 	}
 
+	/**
+	 * Constructor de la clase IndiceMasaCorporal con parámetros.
+	 *
+	 * @param id          El ID del Índice de Masa Corporal.
+	 * @param fecha       La fecha del Índice de Masa Corporal.
+	 * @param imc         El valor del Índice de Masa Corporal.
+	 * @param usuarioImc  El nombre del usuario asociado al Índice de Masa Corporal.
+	 */
 	public IndiceMasaCorporal(Long id, LocalDate fecha, String imc, String usuarioImc) {
 		this.fecha = fecha;
 		this.imc = imc;
