@@ -1,25 +1,29 @@
 package ar.edu.unju.fi.service;
 
-
-
 import java.util.List;
 
 import ar.edu.unju.fi.entity.Testimonio;
-import jakarta.validation.Valid;
+
 
 public interface ITestimonioService {
 	
-    List<Testimonio> getLista();
+	    
+		// Listar testimonio
+	    List<Testimonio> getListaT();
 
+	    // Guardar testimonio
+	    void guardarTestimonio(Testimonio testimonio);
 
-    public void guardar (@Valid Testimonio testimonio);
+	    // Obtener testimonio por código
+	    public Testimonio getBy(Long id);
 
-    public Testimonio getBy(Long Id);
+	    // Eliminar un testimonio
+	    void eliminarTestimonio(Testimonio testimonioEncontrado);
 
-    public void modificar (@Valid Testimonio testimonio);
+	    // Obtener testimonio nuevo
+	     Testimonio getTestimonio();
+	     
+	     Testimonio getByUserId(Long userId);
 
-    public void eliminar (Testimonio testimonioEncontado);
+	}
 
-    public Testimonio getTestimonio();
-
-}
