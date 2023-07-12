@@ -12,49 +12,46 @@
 <body>
 <header th:replace="~{/layouts/header :: header}"></header>
 	<div class="container">
-		<!-- Tabla de registros y modificaciones posibles -->
-		<h1>Tabla de Registros</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Nombre</th>
-					<th>Apellido</th>
-					<th>Email</th>
-					<th>Nacimiento</th>
-					<th>Teléfono</th>
-					<th>Sexo</th>
-					<th>Estatura</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<tr th:each="Regis : ${registros}">
-
-					<td th:text="${Regis.id}"></td>
-
-					<td th:text="${Regis.nombre}"></td>
-
-					<td th:text="${Regis.apellido}"></td>
-
-					<td th:text="${Regis.email}"></td>
-
-					<td th:text="${Regis.nacimiento}"></td>
-
-					<td th:text="${Regis.telefono}"></td>
-
-					<td th:text="${Regis.sexo}"></td>
-
-					<td th:text="${Regis.estatura}"></td>
-
-					<td class="custom-button"><a class="cons_button"
-						th:href="@{/registrarse/modificar/}+${Regis.id}">Editar</a> <a
-						class="cons_button"
-						th:href="@{/registrarse/eliminar/}+${Regis.id}">Eliminar</a></td>
-
-				</tr>
-			</tbody>
-		</table>
+		<div class="tabyform">
+					
+							<h2>Lista de usuarios registrados</h2>
+								  <div class="col-xs-10 col-sm-11 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+								 
+									<table class="table table-hover" >
+									
+										<thead class="table-light">
+											<tr>
+												<th scope="col" class="txt" >ID</th>
+												<th scope="col" class="txt" >Nombre</th>
+												<th scope="col" class="txt">Apellido</th>
+												<th scope="col" class="txt">E-mail</th>
+												<th scope="col" class="txt">Fecha de nacimiento</th>
+												<th scope="col" class="txt">Teléfono</th>
+												<th scope="col" class="txt">Genero</th>													
+											</tr>
+										
+										</thead>
+										<tbody class="table-group-divider">
+											<!-- Filas de la tabla generadas dinámicamente -->
+											<tr  th:each="usu:${usuario}">
+													
+												<td th:text="${usu.id}"></td>
+												<td th:text="${usu.nombre}"></td>
+												<td th:text="${usu.apellido}"></td>
+												<td th:text="${usu.email}"></td>
+												<td th:text="${usu.fechaNac}"></td>
+												<td th:text="${usu.telefono}"></td>
+												<td	th:text="${usu.genero}"></td>
+												<td th:text="${usu.estatura}"></td>
+												<td>
+													<a class ="link" th:href="@{/login/modificar/}+${usu.id}">Editar</a>
+													<a class ="link" th:href="@{/login/eliminar/}+${usu.id}">Eliminar</a>
+												</td>		
+											</tr>
+										</tbody>
+									 </table>	
+									</div>	
+								 </div>
 		<!-- Tabla de IMC y modificaciones posibles -->
 		<h2>Tabla de IMC</h2>
 		<table class="table table-bordered table-striped">
@@ -65,11 +62,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="imc : ${IMCs}">
+				<tr th:each="imc : ${indice}">
 					<td th:text="${imc.imc}"></td>
 					<td th:text="${imc.fecha}"></td>
 					<td><a class="cons_button"
-						th:href="@{/calcularIMC/eliminar/}+${imc.id}">Eliminar</a></td>
+						th:href="@{/calcular/eliminar/}+${imc.id}">Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>

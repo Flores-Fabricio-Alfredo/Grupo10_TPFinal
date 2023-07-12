@@ -16,6 +16,7 @@ import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IUsuarioRepository;
 import ar.edu.unju.fi.service.IIndiceMasaCorporalService;
 import ar.edu.unju.fi.service.IUsuarioService;
+
 @Controller
 @RequestMapping("/")
 public class CalcularImcController {
@@ -26,6 +27,8 @@ public class CalcularImcController {
 	private IUsuarioRepository usuarioRepository;
 	@Autowired
 	private IUsuarioService usuarioService;
+	@Autowired
+	private Usuario usuario;
 
 	@GetMapping("/calcular")
 	
@@ -53,13 +56,13 @@ public class CalcularImcController {
 			if (imc.getId() != null) {
 				imc.setId(imc.getId() + 1);
 			}
-		
+			
 			indiceMasaCorporalService.guardarIMC(imc);
 			usuarioEncontrado.añadirImc(imc);
 			usuarioService.guardar(usuarioEncontrado);
 
 			model.addAttribute("resultadoIMC", imc.getImc());
-			model.addAttribute("usuarioEncontrado", usuarioEncontrado);
+			model.addAttribute("usuario", usuarioEncontrado);
 		}
 		
 		if (optionalUsuario.isEmpty()) {

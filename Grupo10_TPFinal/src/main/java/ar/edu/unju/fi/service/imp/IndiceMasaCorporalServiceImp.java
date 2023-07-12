@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
-import ar.edu.unju.fi.entity.Registro;
 import ar.edu.unju.fi.repository.IIndiceMasaCorporalRepository;
 import ar.edu.unju.fi.service.*;
 
-@Service("IndiceMasaCorporalService")
+@Service("IndiceMasaCorporalServiceImp")
 public class IndiceMasaCorporalServiceImp implements IIndiceMasaCorporalService {
 
 	@Autowired
@@ -66,4 +65,3 @@ public class IndiceMasaCorporalServiceImp implements IIndiceMasaCorporalService 
 	}
 
 }
-
