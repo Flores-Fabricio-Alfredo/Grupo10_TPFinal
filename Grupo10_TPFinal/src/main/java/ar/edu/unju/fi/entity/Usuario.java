@@ -1,6 +1,8 @@
 package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import jakarta.validation.constraints.Email;
@@ -63,7 +66,7 @@ public class Usuario {
     @Column(name = "usu_estatura", nullable = false)
     @NotNull(message = "Este campo no puede quedar vacío.")
     @Max(value = (2), message = "Estatura fuera de rango")
-    private float estatura;
+    private Double estatura;
 
     @Column(name = "usu_estado")
     private boolean estado;
@@ -76,7 +79,7 @@ public class Usuario {
     }
 
     public Usuario(long id, String nombre, String apellido, String email, LocalDate fechaNac, String telefono,
-            String genero, float estatura, boolean estado) {
+            String genero, Double estatura, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -112,7 +115,8 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
+    @OneToMany(mappedBy = "usuario")
+    private List<IndiceMasaCorporal> imc = new ArrayList<>();
     public String getEmail() {
         return email;
     }
@@ -145,11 +149,11 @@ public class Usuario {
         this.genero = genero;
     }
 
-    public float getEstatura() {
+    public Double getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(float estatura) {
+    public void setEstatura(Double estatura) {
         this.estatura = estatura;
     }
 
@@ -168,7 +172,17 @@ public class Usuario {
     public void setCodigoAleatorio(String codigoAleatorio) {
         this.codigoAleatorio = codigoAleatorio;
     }
+    public List<IndiceMasaCorporal> getImc() {
+		return imc;
+	}
 
+	public void setImc(List<IndiceMasaCorporal> imc) {
+		this.imc = imc;
+	}
+	
+	public void añadirImc(IndiceMasaCorporal imc) {
+		this.imc.add(imc);
+	}
     private void generarCodigoAleatorio() {
         Random random = new Random();
         StringBuilder codigoBuilder = new StringBuilder();
