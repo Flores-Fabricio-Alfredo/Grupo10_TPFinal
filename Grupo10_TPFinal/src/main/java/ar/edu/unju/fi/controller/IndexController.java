@@ -5,8 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//Metodo para mostrar la vista
-//de la pagina de inicio de la plataforma
+
+/**
+ * Maneja las solicitudes GET a la URL "/inicio".
+ * Devuelve la plantilla de vista "index".
+ *
+ * @param model El objeto modelo para pasar datos a la vista.
+ * @return El nombre de la vista "index".
+ */
 @Controller
 @RequestMapping("/")
 public class IndexController {

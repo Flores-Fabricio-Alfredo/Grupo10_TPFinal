@@ -22,12 +22,31 @@ public class LoginController {
 	@Autowired
 	private IUsuarioService usuarioService;
 	
+	/**
+     * Maneja las solicitudes GET a la URL "/login".
+     * Agrega un nuevo objeto Login al modelo y devuelve la plantilla de vista "login".
+     *
+     * @param model El objeto modelo para pasar datos a la vista.
+     * @return El nombre de la vista "login".
+     */
+	
 	@GetMapping({"/login"})
 	public String login(Model model) {
 	//Login login = new Login();
 	model.addAttribute("login", login);
 		return "login";
 	}
+	
+	/**
+     * Maneja las solicitudes POST a la URL "/login" para validar las credenciales de inicio de sesión.
+     * Verifica si las credenciales de inicio de sesión coinciden con el usuario "admin" y la contraseña "123".
+     * Si las credenciales son válidas, agrega la lista de usuarios al modelo y redirige a la URL "/gestion_de_datos".
+     * Si las credenciales no son válidas, agrega un mensaje de error al modelo y devuelve la plantilla de vista "login".
+     *
+     * @param model El objeto modelo para pasar datos a la vista.
+     * @param login El objeto Login que contiene las credenciales de inicio de sesión.
+     * @return El nombre de la vista "login" si las credenciales son incorrectas, o la URL de redirección a "/gestion_de_datos" si las credenciales son correctas.
+     */
 	
 	@PostMapping("/login")
 	public String validar(Model model, Login login) {
