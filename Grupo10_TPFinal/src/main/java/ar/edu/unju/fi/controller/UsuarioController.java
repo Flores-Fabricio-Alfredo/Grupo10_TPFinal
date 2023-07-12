@@ -37,7 +37,7 @@ public class UsuarioController {
 			return modelView;
 		}
 		usuarioService.guardar(usuario);
-		modelView.addObject("mensajeusuario", "Registro exitoso! Tu nuevo código de usuario es: " + usuario.getCodigoAleatorio() + ". Guárdalo bien.");
+		modelView.addObject("mensajeusuario", "Registro exitoso! Tu nuevo código de usuario es: " + usuario.getId() + ". Guárdalo bien.");
 		modelView.addObject("usuario", usuarioService.getLista());
 		return modelView;
 	}
