@@ -120,7 +120,7 @@ public class RecetaController {
 	public ModelAndView guardarReceta(@Valid @ModelAttribute("receta") Receta receta, BindingResult result,
 			@RequestParam("file") MultipartFile imagen) throws Exception {
 
-		ModelAndView modelView = new ModelAndView("redirect:/gestion");
+		ModelAndView modelView = new ModelAndView("redirect:/gestion_de_datos");
 		List<Ingrediente> listaIngredientes = ingredienteRepository.findByEstado(true);
 
 		if (result.hasErrors()) {

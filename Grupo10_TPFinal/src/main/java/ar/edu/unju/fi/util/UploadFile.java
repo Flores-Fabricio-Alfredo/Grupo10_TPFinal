@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class UploadFile {
 
-	private final static String UPLOADS_FOLDER = "src/main/resources/static/uploads";
+	private final static String UPLOADS_FOLDER = "src/main/resources/static/upload";
 
 	public Resource load(String filename) throws MalformedURLException {
 		Path path = getPath(filename);
