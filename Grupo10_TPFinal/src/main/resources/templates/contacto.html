@@ -12,60 +12,40 @@
 			<header	th:replace = "~{layouts/header:: header}"></header>	
 				<body>
 					<section class="container text-center mb-3 mt-5">
-						<div class= "row">
-							<div class= "card">
-							<div class="md-3 text-center">
-								<h3>Contactenos</h3>								
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card border-success">
+					<div class="card-body">
+						<h3 class="text-center mb-4" >Contáctenos</h3>
+						<form th:action="@{/contacto}" th:object="${contacto}" method="post">
+							<div class="form-group mb-3">
+								<label for="nombre" class="h5">Nombre</label>
+								<input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre" th:field="*{nombre}">
+								<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div> 
 							</div>
-								<div class="text-center m-4">
-								
-								
-								
-									<form th:action="@{/contacto}"th:object="${contacto}" method="post">									
-									
-									
-								
-									
-									<div class="form-group mb-3">
-						               		<label for="nombre" class="h5">Nombre</label>
-						               		<input  type="text"  class="form-contol" name="Ingrese su nombre" placeholder="Ingrese su nombre" th:field="*{nombre}">
-						               		
-						               		
-						               		<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div> 
-						               </div>
-						           
-						          
-						                <div class="form-group mb-3">
-						                	<label for="email" class="h5">Email</label>
-											<input  type="email" class="form-contol"  name="Ingrese su Email" placeholder="Ingrese un email válido" th:field="*{email}"> 
-
-
-						              		<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div> 
-						              	</div>
-						              
-						              
-						                <div class="form-group mb-3">
-						                	<label for="mensaje" class="h5">Mensaje</label>
-						              		<textarea  class="form-contol"  rows="5" cols="30" placeholder="Tu mensaje... " th:field="*{mensaje}"></textarea>
-						             
-											<div class="text-danger" th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"></div> 
-										</div>
-										
-										
-										<div class="text-center m-4">
-											<input type="submit" class="btn btn-lg" style="background-color: #45BFA9; color: white; outline: none;" value="Enviar">
-										</div>
-									                
-						         	</form>	
-									 <div class="text-center h3">
-              							<p  th:if="${mensaje}" th:text="${mensaje}"></p>
-            						 </div>				
-								</div>
+							<div class="form-group mb-3">
+								<label for="email" class="h5">Email</label>
+								<input type="email" class="form-control" name="email" placeholder="Ingrese un email válido" th:field="*{email}">
+								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div> 
+							</div>
+							<div class="form-group mb-3">
+								<label for="mensaje" class="h5">Mensaje</label>
+								<textarea class="form-control" rows="5" placeholder="Tu mensaje..." th:field="*{mensaje}"></textarea>
+								<div class="text-danger" th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"></div> 
+							</div>
+							<div class="text-center mt-4">
+								<input type="submit" class="btn btn-success" value="Enviar">
+							</div>
+						</form>
+						<div class="text-center mt-4">
+							<p class="h3" th:if="${mensaje}" th:text="${mensaje}"></p>
 						</div>
-						
-						</div>
-						
-					</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+					
 				</body>
 			<footer th:replace = "~{layouts/footer :: footer}"></footer>
 			<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
